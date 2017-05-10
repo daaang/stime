@@ -44,4 +44,8 @@ describe('a default task object', function() {
     expect(task.get_tomatoes_length()).toBe(0);
     expect(task.get_tomatoes()).toEqual([]);
   });
+
+  it('can be completed', function() {
+    task.set_done();
+  });
 });
