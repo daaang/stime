@@ -34,6 +34,10 @@ module.exports = function() {
       result = {};
       result[Symbol.iterator] = function*() {};
       return result;
+    },
+
+    'get_children_length': function() {
+      return 0;
     }
   };
 };
