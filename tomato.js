@@ -20,16 +20,16 @@ var is_an_object = function(value) {
   return (typeof value === 'object')
 };
 
-module.exports = function(given_description) {
+module.exports = function(input_value) {
   var current_time_in_ms, description;
 
-  if (is_an_object(given_description)) {
-    current_time_in_ms = given_description[0]
-    description = given_description[1]
+  if (is_an_object(input_value)) {
+    current_time_in_ms = input_value[0]
+    description = input_value[1]
 
   } else {
     current_time_in_ms = Date.now();
-    description = given_description || '';
+    description = input_value || '';
   }
 
   return {
