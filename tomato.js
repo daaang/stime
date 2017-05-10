@@ -17,7 +17,7 @@
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
 var is_an_array = function(value) {
-  return (typeof value === 'object')
+  return Object.prototype.toString.apply(value) === '[object Array]';
 };
 
 module.exports = function(input_value) {
