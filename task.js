@@ -20,6 +20,10 @@ module.exports = function() {
   return {
     'is_done': function() {
       return false;
-    }
+    },
+
+    'get_best': function() {},
+    'get_expected': function() {},
+    'get_worst': function() {}
   };
 };

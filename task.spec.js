@@ -24,4 +24,10 @@ describe('a default task object', function() {
   it('is not done', function() {
     expect(task.is_done()).toBe(false);
   });
+
+  it('has no estimates', function() {
+    expect(task.get_best()).toBeUndefined();
+    expect(task.get_expected()).toBeUndefined();
+    expect(task.get_worst()).toBeUndefined();
+  });
 });
