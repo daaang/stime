@@ -17,8 +17,10 @@
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
 module.exports = function(given_description) {
-  var current_time_in_ms = Date.now();
-  var description = given_description || '';
+  var current_time_in_ms, description;
+
+  description = given_description || '';
+  current_time_in_ms = Date.now();
 
   return {
     'get_description': function() {
