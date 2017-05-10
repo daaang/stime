@@ -19,7 +19,7 @@
 var Task = require('../lib/task');
 
 describe('a default task object', function() {
-  task = Task();
+  var task = Task();
 
   it('is not done', function() {
     expect(task.is_done()).toBe(false);
