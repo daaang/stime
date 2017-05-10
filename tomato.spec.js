@@ -18,6 +18,9 @@
 
 var Tomato = require('./tomato');
 
-describe('nothing', function() {
+describe('a default tomato object', function() {
+  var current_time_in_ms = Date.now();
+  var tomato = Tomato();
+
   it('is a working test environment', function() {});
 });
