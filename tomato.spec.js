@@ -41,3 +41,12 @@ describe('a default tomato object', function() {
                                        tomato.get_description()]);
   });
 });
+
+describe('a tomato object with a description', function() {
+  var current_time_in_ms = Date.now();
+  var tomato = Tomato('writing tests');
+
+  it('remembers its description', function() {
+    expect(tomato.get_description()).toBe('writing tests');
+  });
+});
