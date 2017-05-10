@@ -17,7 +17,11 @@
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
 module.exports = function() {
+  var current_time_in_ms = Date.now();
+
   return {
-    'get_time': function() {}
+    'get_time': function() {
+      return current_time_in_ms;
+    }
   };
 };
