@@ -6,5 +6,5 @@ node_js:
 - "7"
 - "iojs"
 - "node"
-install: sudo npm install -g jasmine
+install: npm install -g jasmine-node
 script: make test

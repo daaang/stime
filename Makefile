@@ -18,4 +18,4 @@
 .PHONY: test
 
 test:
-	jasmine-node .
+	npm test

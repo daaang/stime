@@ -1,0 +1,22 @@
+{
+  "name": "stime",
+  "version": "0.0.0",
+  "devDependencies": {
+    "jasmine-node": "latest"
+  },
+  "description": "track three-number estimates and tomatoes",
+  "main": "tomato.js",
+  "scripts": {
+    "test": "jasmine-node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daaang/stime.git"
+  },
+  "author": "Matthew Alexander LaChance",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/daaang/stime/issues"
+  },
+  "homepage": "https://github.com/daaang/stime#readme"
+}
