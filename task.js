@@ -28,6 +28,12 @@ module.exports = function() {
 
     'get_best': function() {},
     'get_expected': function() {},
-    'get_worst': function() {}
+    'get_worst': function() {},
+
+    'get_children': function() {
+      result = {};
+      result[Symbol.iterator] = function*() {};
+      return result;
+    }
   };
 };

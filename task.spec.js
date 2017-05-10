@@ -34,4 +34,8 @@ describe('a default task object', function() {
   it('has a blank description', function() {
     expect(task.get_description()).toBe('');
   });
+
+  it('has no child tasks', function() {
+    expect(task.get_children()).toEqual([]);
+  });
 });
