@@ -29,7 +29,7 @@ module.exports = function(description) {
     },
 
     'get_json': function() {
-      return [current_time_in_ms, ''];
+      return [current_time_in_ms, description || ''];
     }
   };
 };

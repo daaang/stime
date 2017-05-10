@@ -49,4 +49,8 @@ describe('a tomato object with a description', function() {
   it('remembers its description', function() {
     expect(tomato.get_description()).toBe('writing tests');
   });
+
+  it('includes its description in its json output', function() {
+    expect(tomato.get_json()[1]).toBe('writing tests');
+  });
 });
