@@ -47,5 +47,6 @@ describe('a default task object', function() {
 
   it('can be completed', function() {
     task.set_done();
+    expect(task.is_done()).toBe(true);
   });
 });
