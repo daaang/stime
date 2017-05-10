@@ -18,6 +18,6 @@
 
 var Task = require('./task');
 
-describe('nothing', function() {
-  it('is a valid test environment', function() {});
+describe('a default task object', function() {
+  task = Task();
 });
