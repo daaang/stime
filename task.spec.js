@@ -36,7 +36,11 @@ describe('a default task object', function() {
   });
 
   it('has no child tasks', function() {
-    expect(task.get_children()).toEqual([]);
     expect(task.get_children_length()).toBe(0);
+    expect(task.get_children()).toEqual([]);
+  });
+
+  it('has no tomatoes', function() {
+    expect(task.get_tomatoes_length()).toBe(0);
   });
 });

@@ -38,6 +38,10 @@ module.exports = function() {
 
     'get_children_length': function() {
       return 0;
+    },
+
+    'get_tomatoes_length': function() {
+      return 0;
     }
   };
 };
