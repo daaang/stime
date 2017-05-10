@@ -31,4 +31,8 @@ describe('a default tomato object', function() {
       expect(the_time).toBeGreaterThan(current_time_in_ms - 1000);
     }
   });
+
+  it('has an empty description', function() {
+    expect(tomato.get_description()).toBe('');
+  });
 });
