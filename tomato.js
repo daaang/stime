@@ -19,8 +19,14 @@
 module.exports = function(given_description) {
   var current_time_in_ms, description;
 
-  description = given_description || '';
-  current_time_in_ms = Date.now();
+  if (typeof given_description === 'object') {
+    current_time_in_ms = given_description[0]
+    description = given_description[1]
+
+  } else {
+    current_time_in_ms = Date.now();
+    description = given_description || '';
+  }
 
   return {
     'get_description': function() {
