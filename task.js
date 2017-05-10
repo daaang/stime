@@ -16,4 +16,10 @@
 // You should have received a copy of the GNU General Public License
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
-module.exports = function() {};
+module.exports = function() {
+  return {
+    'is_done': function() {
+      return false;
+    }
+  };
+};

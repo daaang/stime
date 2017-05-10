@@ -20,4 +20,8 @@ var Task = require('./task');
 
 describe('a default task object', function() {
   task = Task();
+
+  it('is not done', function() {
+    expect(task.is_done()).toBe(false);
+  });
 });
