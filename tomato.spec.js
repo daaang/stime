@@ -35,4 +35,9 @@ describe('a default tomato object', function() {
   it('has an empty description', function() {
     expect(tomato.get_description()).toBe('');
   });
+
+  it('has a json representation', function() {
+    expect(tomato.get_json()).toEqual([tomato.get_time(),
+                                       tomato.get_description()]);
+  });
 });

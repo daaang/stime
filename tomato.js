@@ -26,6 +26,10 @@ module.exports = function() {
 
     'get_time': function() {
       return current_time_in_ms;
+    },
+
+    'get_json': function() {
+      return [current_time_in_ms, ''];
     }
   };
 };
