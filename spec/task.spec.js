@@ -19,7 +19,21 @@
 var Task = require('../lib/task');
 
 describe('a default task object', function() {
-  var task = Task();
+  var task;
+
+  beforeEach(function() {
+    task = Task();
+  });
+
+  describe('when set as done', function() {
+    beforeEach(function() {
+      task.set_done();
+    });
+
+    it('is done', function() {
+      expect(task.is_done()).toBe(true);
+    });
+  });
 
   it('is not done', function() {
     expect(task.is_done()).toBe(false);
@@ -43,10 +57,5 @@ describe('a default task object', function() {
   it('has no tomatoes', function() {
     expect(task.get_tomatoes_length()).toBe(0);
     expect(task.get_tomatoes()).toEqual([]);
-  });
-
-  it('can be completed', function() {
-    task.set_done();
-    expect(task.is_done()).toBe(true);
   });
 });
