@@ -22,8 +22,6 @@ describe('a default tomato object', function() {
   var current_time_in_ms = Date.now();
   var tomato = Tomato();
 
-  it('is a working test environment', function() {});
-
   it('is within 1 second of the current time', function() {
     var the_time = tomato.get_time()
 
