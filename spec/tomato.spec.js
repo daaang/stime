@@ -27,6 +27,7 @@ describe('a default tomato object', function() {
 
     if (the_time > current_time_in_ms) {
       expect(the_time).toBeLessThan(current_time_in_ms + 1000);
+
     } else {
       expect(the_time).toBeGreaterThan(current_time_in_ms - 1000);
     }
