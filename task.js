@@ -16,6 +16,12 @@
 // You should have received a copy of the GNU General Public License
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
+var create_empty_iterator = function() {
+  result = {};
+  result[Symbol.iterator] = function*() {};
+  return result;
+};
+
 module.exports = function() {
   return {
     'is_done': function() {
@@ -31,9 +37,7 @@ module.exports = function() {
     'get_worst': function() {},
 
     'get_children': function() {
-      result = {};
-      result[Symbol.iterator] = function*() {};
-      return result;
+      return create_empty_iterator();
     },
 
     'get_children_length': function() {
@@ -41,9 +45,7 @@ module.exports = function() {
     },
 
     'get_tomatoes': function() {
-      result = {};
-      result[Symbol.iterator] = function*() {};
-      return result;
+      return create_empty_iterator();
     },
 
     'get_tomatoes_length': function() {
