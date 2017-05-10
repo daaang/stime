@@ -16,7 +16,7 @@
 // You should have received a copy of the GNU General Public License
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
-var Task = require('./task');
+var Task = require('../lib/task');
 
 describe('a default task object', function() {
   task = Task();
