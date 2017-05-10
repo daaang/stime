@@ -22,6 +22,10 @@ module.exports = function() {
       return false;
     },
 
+    'get_description': function() {
+      return '';
+    },
+
     'get_best': function() {},
     'get_expected': function() {},
     'get_worst': function() {}

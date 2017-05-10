@@ -30,4 +30,8 @@ describe('a default task object', function() {
     expect(task.get_expected()).toBeUndefined();
     expect(task.get_worst()).toBeUndefined();
   });
+
+  it('has a blank description', function() {
+    expect(task.get_description()).toBe('');
+  });
 });
