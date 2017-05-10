@@ -25,10 +25,12 @@ describe('a default tomato object', function() {
   it('is a working test environment', function() {});
 
   it('is within 1 second of the current time', function() {
-    if (tomato.get_time() > current_time_in_ms) {
-      expect(tomato.get_time()).toBeLessThan(current_time_in_ms + 1000);
+    var the_time = tomato.get_time()
+
+    if (the_time > current_time_in_ms) {
+      expect(the_time).toBeLessThan(current_time_in_ms + 1000);
     } else {
-      expect(tomato.get_time()).toBeGreaterThan(current_time_in_ms - 1000);
+      expect(the_time).toBeGreaterThan(current_time_in_ms - 1000);
     }
   });
 });
