@@ -16,10 +16,14 @@
 // You should have received a copy of the GNU General Public License
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
+var is_an_object = function(value) {
+  return (typeof value === 'object')
+};
+
 module.exports = function(given_description) {
   var current_time_in_ms, description;
 
-  if (typeof given_description === 'object') {
+  if (is_an_object(given_description)) {
     current_time_in_ms = given_description[0]
     description = given_description[1]
 
