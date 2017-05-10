@@ -33,6 +33,10 @@ describe('a default task object', function() {
     it('is done', function() {
       expect(task.is_done()).toBe(true);
     });
+
+    it('can be undone', function() {
+      task.set_not_done();
+    });
   });
 
   it('is not done', function() {
