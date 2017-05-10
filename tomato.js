@@ -16,12 +16,13 @@
 // You should have received a copy of the GNU General Public License
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
-module.exports = function(description) {
+module.exports = function(given_description) {
   var current_time_in_ms = Date.now();
+  var description = given_description || '';
 
   return {
     'get_description': function() {
-      return description || '';
+      return description;
     },
 
     'get_time': function() {
@@ -29,7 +30,7 @@ module.exports = function(description) {
     },
 
     'get_json': function() {
-      return [current_time_in_ms, description || ''];
+      return [current_time_in_ms, description];
     }
   };
 };
