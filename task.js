@@ -40,6 +40,12 @@ module.exports = function() {
       return 0;
     },
 
+    'get_tomatoes': function() {
+      result = {};
+      result[Symbol.iterator] = function*() {};
+      return result;
+    },
+
     'get_tomatoes_length': function() {
       return 0;
     }
