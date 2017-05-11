@@ -154,6 +154,10 @@ describe('a default task object', function() {
     it("inherits its child's expected estimate", function() {
       expect(task.get_expected()).toBe(3);
     });
+
+    it("inherits its child's worst estimate", function() {
+      expect(task.get_worst()).toBe(7);
+    });
   });
 });
 
