@@ -86,4 +86,5 @@ describe('a default task object', function() {
   };
 
   it_can_get_an_estimate_of(1, 2, 3);
+  it_can_get_an_estimate_of(2, 3, 8);
 });
