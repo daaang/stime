@@ -131,5 +131,9 @@ describe('a default task object', function() {
     });
 
     it("doesn't fail", function() {});
+
+    it('remembers the description', function() {
+      expect(task.get_description()).toBe('wangjangle the jibbajabba');
+    });
   });
 });
