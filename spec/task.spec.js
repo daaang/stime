@@ -124,4 +124,12 @@ describe('a default task object', function() {
 
   it_can_get_an_estimate_of(1, 2, 3);
   it_can_get_an_estimate_of(2, 3, 8);
+
+  describe('when given a description', function() {
+    beforeEach(function() {
+      task.set_description('wangjangle the jibbajabba');
+    });
+
+    it("doesn't fail", function() {});
+  });
 });
