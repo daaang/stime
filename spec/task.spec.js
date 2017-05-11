@@ -130,8 +130,6 @@ describe('a default task object', function() {
       task.set_description('wangjangle the jibbajabba');
     });
 
-    it("doesn't fail", function() {});
-
     it('remembers the description', function() {
       expect(task.get_description()).toBe('wangjangle the jibbajabba');
     });
