@@ -152,3 +152,15 @@ describe('a task with an inital description', function() {
     expect(task.get_description()).toBe('wow wow');
   });
 });
+
+describe('a task with an initial estimate of [2, 3, 5]', function() {
+  var task;
+
+  beforeEach(function() {
+    task = Task(2, 3, 5);
+  });
+
+  it('has a best estimate of 2', function() {
+    expect(task.get_best()).toBe(2);
+  });
+});
