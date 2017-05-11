@@ -154,13 +154,17 @@ describe('a task with an inital description', function() {
 });
 
 describe('a task with an initial estimate of [2, 3, 5]', function() {
-  var task;
+  var task, it_has_an_estimate;
 
   beforeEach(function() {
     task = Task(2, 3, 5);
   });
 
-  it('has a best estimate of 2', function() {
-    expect(task.get_best()).toBe(2);
-  });
+  it_has_an_estimate = function(name, value) {
+    it('has a '+name+' estimate of '+value.toString(), function() {
+      expect(task['get_'+name]()).toBe(value);
+    });
+  };
+
+  it_has_an_estimate('best', 2);
 });
