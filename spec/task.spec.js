@@ -73,9 +73,6 @@ describe('a default task object', function() {
       task.set_estimate(1, 2, 3);
     });
 
-    it('can be given an estimate', function() {
-    });
-
     it('remembers its best estimate', function() {
       expect(task.get_best()).toBe(1);
     });
