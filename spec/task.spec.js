@@ -181,4 +181,8 @@ describe('a task with an initial estimate and description', function() {
   it('stores its description', function() {
     expect(task.get_description()).toBe('take a while');
   });
+
+  it('has the expected 6Te', function() {
+    expect(task.get_6Te()).toBe(104);
+  });
 });
