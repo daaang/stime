@@ -82,6 +82,10 @@ describe('a default task object', function() {
       it('remembers its best estimate', function() {
         expect(task.get_best()).toBe(best);
       });
+
+      it('remembers its expected estimate', function() {
+        expect(task.get_expected()).toBe(expected);
+      });
     });
   };
 
