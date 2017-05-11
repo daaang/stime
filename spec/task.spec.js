@@ -170,3 +170,15 @@ describe('a task with an initial estimate of [2, 3, 5]', function() {
   it_has_an_estimate('expected', 3);
   it_has_an_estimate('worst', 5);
 });
+
+describe('a task with an initial estimate and description', function() {
+  var task;
+
+  beforeEach(function() {
+    task = Task(12, 18, 20, 'take a while');
+  });
+
+  it('stores its description', function() {
+    expect(task.get_description()).toBe('take a while');
+  });
+});
