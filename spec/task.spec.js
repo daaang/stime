@@ -20,6 +20,7 @@ var Task = require('../lib/task');
 
 describe('a default task object', function() {
   var task;
+  var it_has_no, it_can_get_an_estimate_of;
 
   beforeEach(function() {
     task = Task();
@@ -29,7 +30,7 @@ describe('a default task object', function() {
     expect(task.is_done()).toBe(false);
   });
 
-  var it_has_no = function(estimate) {
+  it_has_no = function(estimate) {
     it('has no '+estimate+' estimate', function() {
       expect(task['get_'+estimate]()).toBeUndefined();
     });
@@ -68,7 +69,7 @@ describe('a default task object', function() {
     });
   });
 
-  var it_can_get_an_estimate_of = function(best, expected, worst) {
+  it_can_get_an_estimate_of = function(best, expected, worst) {
     var estimate_text = best.toString() + ', ' + expected.toString() +
                                           ', ' + worst.toString();
 
