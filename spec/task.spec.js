@@ -139,6 +139,14 @@ describe('a default task object', function() {
       expect(task.get_description()).toBe('');
     });
   });
+
+  describe('when loaded with a subtask', function() {
+    beforeEach(function() {
+      task.append_child(Task(1, 3, 7));
+    });
+
+    it('succeeds', function() {});
+  });
 });
 
 describe('a task with an inital description', function() {
