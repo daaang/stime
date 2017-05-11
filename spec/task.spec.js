@@ -167,4 +167,6 @@ describe('a task with an initial estimate of [2, 3, 5]', function() {
   };
 
   it_has_an_estimate('best', 2);
+  it_has_an_estimate('expected', 3);
+  it_has_an_estimate('worst', 5);
 });
