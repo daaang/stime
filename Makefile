@@ -15,7 +15,10 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with stime. If not, see <http://www.gnu.org/licenses/>.
-.PHONY: test
+.PHONY: vtest test
+
+vtest:
+	jasmine-node --verbose .
 
 test:
 	npm test
