@@ -186,3 +186,11 @@ describe('a task with an initial estimate and description', function() {
     expect(task.get_6Te()).toBe(104);
   });
 });
+
+describe('new tasks', function() {
+  it('cannot start with 2 arguments', function() {
+    expect(function() {
+      var task = Task(1, 2);
+    }).toThrow();
+  });
+});
