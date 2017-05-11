@@ -90,6 +90,16 @@ describe('a default task object', function() {
       it('remembers its worst estimate', function() {
         expect(task.get_worst()).toBe(worst);
       });
+
+      describe('and then given a null estimate', function() {
+        beforeEach(function() {
+          task.set_estimate();
+        });
+
+        it_has_no('best');
+        it_has_no('expected');
+        it_has_no('worst');
+      });
     });
   };
 
