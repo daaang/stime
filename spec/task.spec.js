@@ -193,4 +193,10 @@ describe('new tasks', function() {
       var task = Task(1, 2);
     }).toThrow();
   });
+
+  it('cannot start with 5 arguments', function() {
+    expect(function() {
+      var task = Task(1, 2, 3, 4, 5);
+    }).toThrow();
+  });
 });
