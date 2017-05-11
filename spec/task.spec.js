@@ -140,3 +140,15 @@ describe('a default task object', function() {
     });
   });
 });
+
+describe('a task with an inital description', function() {
+  var task;
+
+  beforeEach(function() {
+    task = Task('wow wow');
+  });
+
+  it('stores that description', function() {
+    expect(task.get_description()).toBe('wow wow');
+  });
+});
