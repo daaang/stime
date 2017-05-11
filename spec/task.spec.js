@@ -133,5 +133,10 @@ describe('a default task object', function() {
     it('remembers the description', function() {
       expect(task.get_description()).toBe('wangjangle the jibbajabba');
     });
+
+    it('can be given a null description', function() {
+      task.set_description()
+      expect(task.get_description()).toBe('');
+    });
   });
 });
