@@ -106,6 +106,10 @@ describe('a default task object', function() {
         expect(task.get_6Te()).toBe(weighted_sum);
       });
 
+      it('has a 6sigma of '+range.toString(), function() {
+        expect(task.get_6sigma()).toBe(range);
+      });
+
       describe('and then given a null estimate', function() {
         beforeEach(function() {
           task.set_estimate();
