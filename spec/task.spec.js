@@ -146,6 +146,10 @@ describe('a default task object', function() {
     });
 
     it('succeeds', function() {});
+
+    it("inherits its child's best estimate", function() {
+      expect(task.get_best()).toBe(1);
+    });
   });
 });
 
