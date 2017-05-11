@@ -49,10 +49,6 @@ describe('a default task object', function() {
     expect(task.get_tomatoes()).toEqual([]);
   });
 
-  it('can be given an estimate', function() {
-    task.set_estimate(1, 2, 3);
-  });
-
   describe('when set as done', function() {
     beforeEach(function() {
       task.set_done();
@@ -65,6 +61,15 @@ describe('a default task object', function() {
     it('can be undone', function() {
       task.set_not_done();
       expect(task.is_done()).toBe(false);
+    });
+  });
+
+  describe('when given an estimate', function() {
+    beforeEach(function() {
+      task.set_estimate(1, 2, 3);
+    });
+
+    it('can be given an estimate', function() {
     });
   });
 });
