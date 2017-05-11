@@ -68,13 +68,21 @@ describe('a default task object', function() {
     });
   });
 
-  describe('when given an estimate', function() {
-    beforeEach(function() {
-      task.set_estimate(1, 2, 3);
-    });
+  var it_can_get_an_estimate_of = function(best, expected, worst) {
+    var estimate_text = best.toString() + ', ' + expected.toString() +
+                                          ', ' + worst.toString();
 
-    it('remembers its best estimate', function() {
-      expect(task.get_best()).toBe(1);
+    describe('when given an estimate of ['+estimate_text+']',
+             function() {
+      beforeEach(function() {
+        task.set_estimate(best, expected, worst);
+      });
+
+      it('remembers its best estimate', function() {
+        expect(task.get_best()).toBe(best);
+      });
     });
-  });
+  };
+
+  it_can_get_an_estimate_of(1, 2, 3);
 });
