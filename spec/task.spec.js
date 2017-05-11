@@ -54,6 +54,10 @@ describe('a default task object', function() {
     expect(task.get_tomatoes()).toEqual([]);
   });
 
+  it('has an average of zero', function() {
+    expect(task.get_6Te()).toBe(0);
+  });
+
   describe('when set as done', function() {
     beforeEach(function() {
       task.set_done();
