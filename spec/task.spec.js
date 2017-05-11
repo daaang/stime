@@ -29,11 +29,15 @@ describe('a default task object', function() {
     expect(task.is_done()).toBe(false);
   });
 
-  it('has no estimates', function() {
-    expect(task.get_best()).toBeUndefined();
-    expect(task.get_expected()).toBeUndefined();
-    expect(task.get_worst()).toBeUndefined();
-  });
+  var it_has_no = function(estimate) {
+    it('has no '+estimate+' estimate', function() {
+      expect(task['get_'+estimate]()).toBeUndefined();
+    });
+  };
+
+  it_has_no('best');
+  it_has_no('expected');
+  it_has_no('worst');
 
   it('has a blank description', function() {
     expect(task.get_description()).toBe('');
