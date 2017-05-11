@@ -73,6 +73,9 @@ describe('a default task object', function() {
     var estimate_text = best.toString() + ', ' + expected.toString() +
                                           ', ' + worst.toString();
 
+    var weighted_sum = 4*expected + best + worst;
+    var range = worst - best;
+
     describe('when given an estimate of ['+estimate_text+']',
              function() {
       beforeEach(function() {
@@ -89,6 +92,10 @@ describe('a default task object', function() {
 
       it('remembers its worst estimate', function() {
         expect(task.get_worst()).toBe(worst);
+      });
+
+      it('has a 6Te of '+weighted_sum.toString(), function() {
+        expect(task.get_6Te()).toBe(weighted_sum);
       });
 
       describe('and then given a null estimate', function() {
