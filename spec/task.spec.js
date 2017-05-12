@@ -184,6 +184,10 @@ describe('a default task object', function() {
       it('has a 6Te summing that of its children', function() {
         expect(task.get_6Te()).toBe(50);
       });
+
+      it('has a 6sigma summing that of its children', function() {
+        expect(task.get_6sigma()).toBe(8);
+      });
     });
   });
 
