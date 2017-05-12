@@ -164,6 +164,24 @@ describe('a default task object', function() {
       expect(task.get_worst()).toBe(7);
     });
   });
+
+  describe('when loaded with a different subtask', function() {
+    beforeEach(function() {
+      task.append_child(Task(2, 4, 8));
+    });
+
+    it("inherits its child's best estimate", function() {
+      expect(task.get_best()).toBe(2);
+    });
+
+    it("inherits its child's expected estimate", function() {
+      expect(task.get_expected()).toBe(4);
+    });
+
+    it("inherits its child's worst estimate", function() {
+      expect(task.get_worst()).toBe(8);
+    });
+  });
 });
 
 describe('a task with an inital description', function() {
