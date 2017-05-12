@@ -180,6 +180,10 @@ describe('a default task object', function() {
       it("has an expected estimate summing its children's", function() {
         expect(task.get_expected()).toBe(8);
       });
+
+      it('has a 6Te summing that of its children', function() {
+        expect(task.get_6Te()).toBe(50);
+      });
     });
   });
 
