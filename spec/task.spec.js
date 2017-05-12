@@ -177,7 +177,7 @@ describe('a default task object', function() {
         task.append_child(Task(4, 5, 6));
       });
 
-      xit("has an expected estimate summing its children's", function() {
+      it("has an expected estimate summing its children's", function() {
         expect(task.get_expected()).toBe(8);
       });
     });
