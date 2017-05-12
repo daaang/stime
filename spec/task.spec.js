@@ -17,6 +17,7 @@
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
 var Task = require('../lib/task');
+var they = it;
 
 describe('a default task object', function() {
   var task;
@@ -208,13 +209,13 @@ describe('a task with an initial estimate and description', function() {
 });
 
 describe('new tasks', function() {
-  it('cannot start with 2 arguments', function() {
+  they('cannot start with 2 arguments', function() {
     expect(function() {
       var task = Task(1, 2);
     }).toThrow();
   });
 
-  it('cannot start with 5 arguments', function() {
+  they('cannot start with 5 arguments', function() {
     expect(function() {
       var task = Task(1, 2, 3, 4, 5);
     }).toThrow();
