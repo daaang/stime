@@ -163,6 +163,16 @@ describe('a default task object', function() {
     it("inherits its child's worst estimate", function() {
       expect(task.get_worst()).toBe(7);
     });
+
+    xdescribe('and then loaded with a second subtask', function() {
+      beforeEach(function() {
+        task.append_child(Task(4, 5, 6));
+      });
+
+      it("has an expected estimate summing its children's", function() {
+        expect(task.get_expected()).toBe(8);
+      });
+    });
   });
 
   describe('when loaded with a different subtask', function() {
