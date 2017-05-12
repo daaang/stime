@@ -164,12 +164,16 @@ describe('a default task object', function() {
       expect(task.get_worst()).toBe(7);
     });
 
-    xdescribe('and then loaded with a second subtask', function() {
+    it('has one child task', function() {
+      expect(task.get_children_length()).toBe(1);
+    });
+
+    describe('and then loaded with a second subtask', function() {
       beforeEach(function() {
         task.append_child(Task(4, 5, 6));
       });
 
-      it("has an expected estimate summing its children's", function() {
+      xit("has an expected estimate summing its children's", function() {
         expect(task.get_expected()).toBe(8);
       });
     });
