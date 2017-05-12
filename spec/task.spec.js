@@ -47,11 +47,17 @@ describe('a default task object', function() {
 
   it('has no child tasks', function() {
     expect(task.get_children_length()).toBe(0);
+  });
+
+  it('has an empty child task iterator', function() {
     expect(task.get_children()).toEqual([]);
   });
 
   it('has no tomatoes', function() {
     expect(task.get_tomatoes_length()).toBe(0);
+  });
+
+  it('has an empty tomato iterator', function() {
     expect(task.get_tomatoes()).toEqual([]);
   });
 
