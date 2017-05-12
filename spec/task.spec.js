@@ -168,6 +168,10 @@ describe('a default task object', function() {
       expect(task.get_children_length()).toBe(1);
     });
 
+    it('has an iterator with that child', function() {
+      expect(task.get_children()[0].get_6Te()).toBe(20);
+    });
+
     describe('and then loaded with a second subtask', function() {
       beforeEach(function() {
         task.append_child(Task(4, 5, 6));
