@@ -17,7 +17,7 @@
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
 var Task = require('../lib/task');
-var they = it;
+var they = it; // for describing plural things
 
 describe('a default task object', function() {
   var task;
@@ -145,8 +145,6 @@ describe('a default task object', function() {
     beforeEach(function() {
       task.append_child(Task(1, 3, 7));
     });
-
-    it('succeeds', function() {});
 
     it("inherits its child's best estimate", function() {
       expect(task.get_best()).toBe(1);
