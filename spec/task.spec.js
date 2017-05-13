@@ -253,6 +253,11 @@ describe('a default task object', function() {
       expect(task.get_tomatoes_length()).toBe(1);
     });
 
+    it('keeps a copy of the tomato', function() {
+      expect(task.get_tomatoes()[0].get_description()).toBe(
+        'first tomato');
+    });
+
     describe('and then loaded with a second tomato', function() {
       beforeEach(function() {
         task.add_tomato(Tomato('second tomato'));
