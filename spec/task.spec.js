@@ -17,6 +17,7 @@
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
 var Task = require('../lib/task');
+var Tomato = require('../lib/tomato');
 var they = it; // for describing plural things
 
 describe('a default task object', function() {
@@ -241,6 +242,14 @@ describe('a default task object', function() {
     it("inherits its child's worst estimate", function() {
       expect(task.get_worst()).toBe(8);
     });
+  });
+
+  describe('when loaded with a tomato', function() {
+    beforeEach(function() {
+      task.add_tomato(Tomato('first tomato'));
+    });
+
+    it('completes without error', function() {});
   });
 });
 
