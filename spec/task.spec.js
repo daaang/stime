@@ -209,6 +209,10 @@ describe('a default task object', function() {
         it('has an increase of 19 in its 6sigma', function() {
           expect(task.get_6sigma()).toBe(27);
         });
+
+        it('has a best estimate of 9', function() {
+          expect(task.get_best()).toBe(9);
+        });
       });
     });
   });
