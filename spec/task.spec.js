@@ -192,6 +192,10 @@ describe('a default task object', function() {
       it('has a best estimate based on its Te and sigma', function() {
         expect(task.get_best()).toBe(7);
       });
+
+      it('has a worst estimate based on its Te and sigma', function() {
+        expect(task.get_worst()).toBe(10);
+      });
     });
   });
 
