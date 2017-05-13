@@ -250,6 +250,10 @@ describe('a default task object', function() {
     });
 
     it('completes without error', function() {});
+
+    it('has one tomato', function() {
+      expect(task.get_tomatoes_length()).toBe(1);
+    });
   });
 });
 
