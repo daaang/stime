@@ -188,6 +188,10 @@ describe('a default task object', function() {
       it('has a 6sigma summing that of its children', function() {
         expect(task.get_6sigma()).toBe(8);
       });
+
+      it('has a best estimate based on its Te and sigma', function() {
+        expect(task.get_best()).toBe(7);
+      });
     });
   });
 
