@@ -271,6 +271,11 @@ describe('a default task object', function() {
         expect(task.get_tomatoes()[0].get_description()).toBe(
           'first tomato');
       });
+
+      it('keeps a copy of the second tomato', function() {
+        expect(task.get_tomatoes()[1].get_description()).toBe(
+          'second tomato');
+      });
     });
   });
 });
