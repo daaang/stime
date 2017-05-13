@@ -213,6 +213,10 @@ describe('a default task object', function() {
         it('has a best estimate of 9', function() {
           expect(task.get_best()).toBe(9);
         });
+
+        it('has an expected estimate of 10', function() {
+          expect(task.get_expected()).toBe(10);
+        });
       });
     });
   });
