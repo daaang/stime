@@ -253,9 +253,14 @@ describe('a default task object', function() {
       expect(task.get_tomatoes_length()).toBe(1);
     });
 
-    it('has two tomatoes after loading a second', function() {
-      task.add_tomato(Tomato('second tomato'));
-      expect(task.get_tomatoes_length()).toBe(2);
+    describe('and then a second tomato', function() {
+      beforeEach(function() {
+        task.add_tomato(Tomato('second tomato'));
+      });
+
+      it('has two tomatoes', function() {
+        expect(task.get_tomatoes_length()).toBe(2);
+      });
     });
   });
 });
