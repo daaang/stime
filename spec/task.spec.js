@@ -196,6 +196,20 @@ describe('a default task object', function() {
       it('has a worst estimate based on its Te and sigma', function() {
         expect(task.get_worst()).toBe(10);
       });
+
+      describe('and then loaded with a third subtask', function() {
+        beforeEach(function() {
+          task.append_child(Task(1, 2, 20));
+        });
+
+        it('has an increase of 29 in its 6Te', function() {
+          expect(task.get_6Te()).toBe(79);
+        });
+
+        it('has an increase of 19 in its 6sigma', function() {
+          expect(task.get_6sigma()).toBe(27);
+        });
+      });
     });
   });
 
