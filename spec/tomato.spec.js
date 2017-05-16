@@ -62,4 +62,8 @@ describe('a tomato object from a json array', function() {
   it('remembers its description', function() {
     expect(tomato.get_description()).toBe('dreaming about tests');
   });
+
+  it('remembers its time', function() {
+    expect(tomato.get_time()).toBe(1234567891011);
+  });
 });
