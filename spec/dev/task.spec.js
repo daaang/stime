@@ -16,8 +16,8 @@
 // You should have received a copy of the GNU General Public License
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
-var Task = require('../lib/task');
-var Tomato = require('../lib/tomato');
+var Task = require('../../lib/task');
+var Tomato = require('../../lib/tomato');
 var they = it; // for describing plural things
 
 describe('a default task object', function() {

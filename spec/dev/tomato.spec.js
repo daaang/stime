@@ -16,7 +16,7 @@
 // You should have received a copy of the GNU General Public License
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
-var Tomato = require('../lib/tomato');
+var Tomato = require('../../lib/tomato');
 
 describe('a default tomato object', function() {
   var current_time_in_ms = Date.now();
