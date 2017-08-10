@@ -60,4 +60,11 @@ describe("Tomato", () => {
       expect(tomato.get_description()).toBe("description");
     });
   });
+
+  describe("#get_json", () => {
+    it("returns the Array representing the tomato", () => {
+      let tomato = Tomato([1234, "description"]);
+      expect(tomato.get_json()).toEqual([1234, "description"]);
+    });
+  });
 });
