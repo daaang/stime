@@ -16,13 +16,13 @@
 // You should have received a copy of the GNU General Public License
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
-var Task = require('../../lib/task');
-var Tomato = require('../../lib/tomato');
-var they = it; // for describing plural things
+const Task = require('../../lib/task');
+const Tomato = require('../../lib/tomato');
+let they = it; // for describing plural things
 
 describe('a default task object', function() {
-  var task;
-  var itHasNo, itCanGetAnEstimateOf;
+  let task;
+  let itHasNo, itCanGetAnEstimateOf;
 
   beforeEach(function() {
     task = Task();
@@ -86,11 +86,11 @@ describe('a default task object', function() {
   });
 
   itCanGetAnEstimateOf = function(best, expected, worst) {
-    var estimateText = best.toString() + ', ' + expected.toString() +
+    let estimateText = best.toString() + ', ' + expected.toString() +
                                           ', ' + worst.toString();
 
-    var weightedSum = 4*expected + best + worst;
-    var range = worst - best;
+    let weightedSum = 4*expected + best + worst;
+    let range = worst - best;
 
     describe('when given an estimate of ['+estimateText+']',
              function() {
@@ -281,7 +281,7 @@ describe('a default task object', function() {
 });
 
 describe('a task with an inital description', function() {
-  var task;
+  let task;
 
   beforeEach(function() {
     task = Task('wow wow');
@@ -293,7 +293,7 @@ describe('a task with an inital description', function() {
 });
 
 describe('a task with an initial estimate of [2, 3, 5]', function() {
-  var task, itHasAnEstimate;
+  let task, itHasAnEstimate;
 
   beforeEach(function() {
     task = Task(2, 3, 5);
@@ -311,7 +311,7 @@ describe('a task with an initial estimate of [2, 3, 5]', function() {
 });
 
 describe('a task with an initial estimate and description', function() {
-  var task;
+  let task;
 
   beforeEach(function() {
     task = Task(12, 18, 20, 'take a while');
@@ -329,13 +329,13 @@ describe('a task with an initial estimate and description', function() {
 describe('new tasks', function() {
   they('cannot start with 2 arguments', function() {
     expect(function() {
-      var task = Task(1, 2);
+      let task = Task(1, 2);
     }).toThrow();
   });
 
   they('cannot start with 5 arguments', function() {
     expect(function() {
-      var task = Task(1, 2, 3, 4, 5);
+      let task = Task(1, 2, 3, 4, 5);
     }).toThrow();
   });
 });
