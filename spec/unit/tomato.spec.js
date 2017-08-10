@@ -21,12 +21,9 @@ const Tomato = require('../../lib/tomato');
 describe("Tomato", () => {
   describe("#get_time", () => {
     it("returns a timestamp", () => {
-      let before = Date.now();
-      let tomatoTime = Tomato().get_time();
-      let after = Date.now();
-
-      expect(tomatoTime).toBeGreaterThan(before - 1);
-      expect(tomatoTime).toBeLessThan(after + 1);
+      expectReturnsCurrentDate(() => {
+        return Tomato().get_time();
+      });
     });
 
     it("returns the timestamp the tomato was inited with", () => {
@@ -35,3 +32,12 @@ describe("Tomato", () => {
     });
   });
 });
+
+let expectReturnsCurrentDate = function(f) {
+  let before = Date.now();
+  let inBetween = f();
+  let after = Date.now();
+
+  expect(inBetween).toBeGreaterThan(before - 1);
+  expect(inBetween).toBeLessThan(after + 1);
+};
