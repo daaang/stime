@@ -53,4 +53,11 @@ describe("Tomato", () => {
       expect(tomato.get_time()).toBe(1234);
     });
   });
+
+  describe("#get_description", () => {
+    it("returns the description the tomato was inited with", () => {
+      let tomato = Tomato([1234, "description"]);
+      expect(tomato.get_description()).toBe("description");
+    });
+  });
 });
