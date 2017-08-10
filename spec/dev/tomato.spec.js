@@ -16,14 +16,14 @@
 // You should have received a copy of the GNU General Public License
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
-var Tomato = require('../../lib/tomato');
+const Tomato = require('../../lib/tomato');
 
 describe('a default tomato object', function() {
-  var current_time_in_ms = Date.now();
-  var tomato = Tomato();
+  let current_time_in_ms = Date.now();
+  let tomato = Tomato();
 
   it('is within 1 second of the current time', function() {
-    var the_time = tomato.get_time()
+    let the_time = tomato.get_time()
 
     if (the_time > current_time_in_ms) {
       expect(the_time).toBeLessThan(current_time_in_ms + 1000);
@@ -44,8 +44,8 @@ describe('a default tomato object', function() {
 });
 
 describe('a tomato object with a description', function() {
-  var current_time_in_ms = Date.now();
-  var tomato = Tomato('writing tests');
+  let current_time_in_ms = Date.now();
+  let tomato = Tomato('writing tests');
 
   it('remembers its description', function() {
     expect(tomato.get_description()).toBe('writing tests');
@@ -57,7 +57,7 @@ describe('a tomato object with a description', function() {
 });
 
 describe('a tomato object from a json array', function() {
-  var tomato = Tomato([1234567891011, 'dreaming about tests'])
+  let tomato = Tomato([1234567891011, 'dreaming about tests'])
 
   it('remembers its description', function() {
     expect(tomato.get_description()).toBe('dreaming about tests');
