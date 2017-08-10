@@ -30,7 +30,7 @@ describe("Tomato", () => {
     expect(tomato.get_time()).toBeLessThan(after + 1);
   });
 
-  it("inits to [Date.now(), arg] with a single arg", () => {
+  it("inits to [Date.now(), arg] with a single String arg", () => {
     let before = Date.now();
     let tomato = Tomato("holler");
     let after = Date.now();
@@ -38,6 +38,13 @@ describe("Tomato", () => {
     expect(tomato.get_description()).toBe("holler");
     expect(tomato.get_time()).toBeGreaterThan(before - 1);
     expect(tomato.get_time()).toBeLessThan(after + 1);
+  });
+
+  it("inits to match a single Array arg", () => {
+    let tomato = Tomato([112358, "imported description"]);
+
+    expect(tomato.get_time()).toBe(112358);
+    expect(tomato.get_description()).toBe("imported description");
   });
 
   describe("#get_time", () => {
