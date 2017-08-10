@@ -25,9 +25,9 @@ describe("Tomato", () => {
     let tomato = Tomato();
     let after = Date.now();
 
-    expect(tomato.get_description()).toBe("");
-    expect(tomato.get_time()).toBeGreaterThan(before - 1);
-    expect(tomato.get_time()).toBeLessThan(after + 1);
+    expect(tomato.getDescription()).toBe("");
+    expect(tomato.getTime()).toBeGreaterThan(before - 1);
+    expect(tomato.getTime()).toBeLessThan(after + 1);
   });
 
   it("inits to [Date.now(), arg] with a single String arg", () => {
@@ -35,36 +35,36 @@ describe("Tomato", () => {
     let tomato = Tomato("holler");
     let after = Date.now();
 
-    expect(tomato.get_description()).toBe("holler");
-    expect(tomato.get_time()).toBeGreaterThan(before - 1);
-    expect(tomato.get_time()).toBeLessThan(after + 1);
+    expect(tomato.getDescription()).toBe("holler");
+    expect(tomato.getTime()).toBeGreaterThan(before - 1);
+    expect(tomato.getTime()).toBeLessThan(after + 1);
   });
 
   it("inits to match a single Array arg", () => {
     let tomato = Tomato([112358, "imported description"]);
 
-    expect(tomato.get_time()).toBe(112358);
-    expect(tomato.get_description()).toBe("imported description");
+    expect(tomato.getTime()).toBe(112358);
+    expect(tomato.getDescription()).toBe("imported description");
   });
 
-  describe("#get_time", () => {
+  describe("#getTime", () => {
     it("returns the timestamp the tomato was inited with", () => {
       let tomato = Tomato([1234, "description"]);
-      expect(tomato.get_time()).toBe(1234);
+      expect(tomato.getTime()).toBe(1234);
     });
   });
 
-  describe("#get_description", () => {
+  describe("#getDescription", () => {
     it("returns the description the tomato was inited with", () => {
       let tomato = Tomato([1234, "description"]);
-      expect(tomato.get_description()).toBe("description");
+      expect(tomato.getDescription()).toBe("description");
     });
   });
 
-  describe("#get_json", () => {
+  describe("#getJson", () => {
     it("returns the Array representing the tomato", () => {
       let tomato = Tomato([1234, "description"]);
-      expect(tomato.get_json()).toEqual([1234, "description"]);
+      expect(tomato.getJson()).toEqual([1234, "description"]);
     });
   });
 });

@@ -19,40 +19,40 @@
 const Tomato = require('../../lib/tomato');
 
 describe('a default tomato object', function() {
-  let current_time_in_ms = Date.now();
+  let currentTimeInMS = Date.now();
   let tomato = Tomato();
 
   it('is within 1 second of the current time', function() {
-    let the_time = tomato.get_time()
+    let theTime = tomato.getTime()
 
-    if (the_time > current_time_in_ms) {
-      expect(the_time).toBeLessThan(current_time_in_ms + 1000);
+    if (theTime > currentTimeInMS) {
+      expect(theTime).toBeLessThan(currentTimeInMS + 1000);
 
     } else {
-      expect(the_time).toBeGreaterThan(current_time_in_ms - 1000);
+      expect(theTime).toBeGreaterThan(currentTimeInMS - 1000);
     }
   });
 
   it('has an empty description', function() {
-    expect(tomato.get_description()).toBe('');
+    expect(tomato.getDescription()).toBe('');
   });
 
   it('has a json representation', function() {
-    expect(tomato.get_json()).toEqual([tomato.get_time(),
-                                       tomato.get_description()]);
+    expect(tomato.getJson()).toEqual([tomato.getTime(),
+                                       tomato.getDescription()]);
   });
 });
 
 describe('a tomato object with a description', function() {
-  let current_time_in_ms = Date.now();
+  let currentTimeInMS = Date.now();
   let tomato = Tomato('writing tests');
 
   it('remembers its description', function() {
-    expect(tomato.get_description()).toBe('writing tests');
+    expect(tomato.getDescription()).toBe('writing tests');
   });
 
   it('includes its description in its json output', function() {
-    expect(tomato.get_json()[1]).toBe('writing tests');
+    expect(tomato.getJson()[1]).toBe('writing tests');
   });
 });
 
@@ -60,10 +60,10 @@ describe('a tomato object from a json array', function() {
   let tomato = Tomato([1234567891011, 'dreaming about tests'])
 
   it('remembers its description', function() {
-    expect(tomato.get_description()).toBe('dreaming about tests');
+    expect(tomato.getDescription()).toBe('dreaming about tests');
   });
 
   it('remembers its time', function() {
-    expect(tomato.get_time()).toBe(1234567891011);
+    expect(tomato.getTime()).toBe(1234567891011);
   });
 });

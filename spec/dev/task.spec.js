@@ -22,205 +22,205 @@ var they = it; // for describing plural things
 
 describe('a default task object', function() {
   var task;
-  var it_has_no, it_can_get_an_estimate_of;
+  var itHasNo, itCanGetAnEstimateOf;
 
   beforeEach(function() {
     task = Task();
   });
 
   it('is not done', function() {
-    expect(task.is_done()).toBe(false);
+    expect(task.isDone()).toBe(false);
   });
 
-  it_has_no = function(estimate) {
+  itHasNo = function(estimate) {
     it('has no '+estimate+' estimate', function() {
-      expect(task['get_'+estimate]()).toBeUndefined();
+      expect(task['get'+estimate]()).toBeUndefined();
     });
   };
 
-  it_has_no('best');
-  it_has_no('expected');
-  it_has_no('worst');
+  itHasNo('Best');
+  itHasNo('Expected');
+  itHasNo('Worst');
 
   it('has a blank description', function() {
-    expect(task.get_description()).toBe('');
+    expect(task.getDescription()).toBe('');
   });
 
   it('has no child tasks', function() {
-    expect(task.get_children_length()).toBe(0);
+    expect(task.getChildrenLength()).toBe(0);
   });
 
   it('has an empty child task iterator', function() {
-    expect(task.get_children()).toEqual([]);
+    expect(task.getChildren()).toEqual([]);
   });
 
   it('has no tomatoes', function() {
-    expect(task.get_tomatoes_length()).toBe(0);
+    expect(task.getTomatoesLength()).toBe(0);
   });
 
   it('has an empty tomato iterator', function() {
-    expect(task.get_tomatoes()).toEqual([]);
+    expect(task.getTomatoes()).toEqual([]);
   });
 
   it('has an average of zero', function() {
-    expect(task.get_6Te()).toBe(0);
+    expect(task.get6Te()).toBe(0);
   });
 
   it('has a range of zero', function() {
-    expect(task.get_6sigma()).toBe(0);
+    expect(task.get6sigma()).toBe(0);
   });
 
   describe('when set as done', function() {
     beforeEach(function() {
-      task.set_done();
+      task.setDone();
     });
 
     it('is done', function() {
-      expect(task.is_done()).toBe(true);
+      expect(task.isDone()).toBe(true);
     });
 
     it('can be undone', function() {
-      task.set_not_done();
-      expect(task.is_done()).toBe(false);
+      task.setNotDone();
+      expect(task.isDone()).toBe(false);
     });
   });
 
-  it_can_get_an_estimate_of = function(best, expected, worst) {
-    var estimate_text = best.toString() + ', ' + expected.toString() +
+  itCanGetAnEstimateOf = function(best, expected, worst) {
+    var estimateText = best.toString() + ', ' + expected.toString() +
                                           ', ' + worst.toString();
 
-    var weighted_sum = 4*expected + best + worst;
+    var weightedSum = 4*expected + best + worst;
     var range = worst - best;
 
-    describe('when given an estimate of ['+estimate_text+']',
+    describe('when given an estimate of ['+estimateText+']',
              function() {
       beforeEach(function() {
-        task.set_estimate(best, expected, worst);
+        task.setEstimate(best, expected, worst);
       });
 
       it('remembers its best estimate', function() {
-        expect(task.get_best()).toBe(best);
+        expect(task.getBest()).toBe(best);
       });
 
       it('remembers its expected estimate', function() {
-        expect(task.get_expected()).toBe(expected);
+        expect(task.getExpected()).toBe(expected);
       });
 
       it('remembers its worst estimate', function() {
-        expect(task.get_worst()).toBe(worst);
+        expect(task.getWorst()).toBe(worst);
       });
 
-      it('has a 6Te of '+weighted_sum.toString(), function() {
-        expect(task.get_6Te()).toBe(weighted_sum);
+      it('has a 6Te of '+weightedSum.toString(), function() {
+        expect(task.get6Te()).toBe(weightedSum);
       });
 
       it('has a 6sigma of '+range.toString(), function() {
-        expect(task.get_6sigma()).toBe(range);
+        expect(task.get6sigma()).toBe(range);
       });
 
       describe('and then given a null estimate', function() {
         beforeEach(function() {
-          task.set_estimate();
+          task.setEstimate();
         });
 
-        it_has_no('best');
-        it_has_no('expected');
-        it_has_no('worst');
+        itHasNo('Best');
+        itHasNo('Expected');
+        itHasNo('Worst');
       });
     });
   };
 
-  it_can_get_an_estimate_of(1, 2, 3);
-  it_can_get_an_estimate_of(2, 3, 8);
+  itCanGetAnEstimateOf(1, 2, 3);
+  itCanGetAnEstimateOf(2, 3, 8);
 
   describe('when given a description', function() {
     beforeEach(function() {
-      task.set_description('wangjangle the jibbajabba');
+      task.setDescription('wangjangle the jibbajabba');
     });
 
     it('remembers the description', function() {
-      expect(task.get_description()).toBe('wangjangle the jibbajabba');
+      expect(task.getDescription()).toBe('wangjangle the jibbajabba');
     });
 
     it('can be given a null description', function() {
-      task.set_description()
-      expect(task.get_description()).toBe('');
+      task.setDescription()
+      expect(task.getDescription()).toBe('');
     });
   });
 
   describe('when loaded with a subtask', function() {
     beforeEach(function() {
-      task.append_child(Task(1, 3, 7));
+      task.appendChild(Task(1, 3, 7));
     });
 
     it("inherits its child's best estimate", function() {
-      expect(task.get_best()).toBe(1);
+      expect(task.getBest()).toBe(1);
     });
 
     it("inherits its child's expected estimate", function() {
-      expect(task.get_expected()).toBe(3);
+      expect(task.getExpected()).toBe(3);
     });
 
     it("inherits its child's worst estimate", function() {
-      expect(task.get_worst()).toBe(7);
+      expect(task.getWorst()).toBe(7);
     });
 
     it('has one child task', function() {
-      expect(task.get_children_length()).toBe(1);
+      expect(task.getChildrenLength()).toBe(1);
     });
 
     it('has an iterator with that child', function() {
-      expect(task.get_children()[0].get_6Te()).toBe(20);
+      expect(task.getChildren()[0].get6Te()).toBe(20);
     });
 
     describe('and then loaded with a second subtask', function() {
       beforeEach(function() {
-        task.append_child(Task(4, 5, 6));
+        task.appendChild(Task(4, 5, 6));
       });
 
       it("has an expected estimate summing its children's", function() {
-        expect(task.get_expected()).toBe(8);
+        expect(task.getExpected()).toBe(8);
       });
 
       it('has a 6Te summing that of its children', function() {
-        expect(task.get_6Te()).toBe(50);
+        expect(task.get6Te()).toBe(50);
       });
 
       it('has a 6sigma summing that of its children', function() {
-        expect(task.get_6sigma()).toBe(8);
+        expect(task.get6sigma()).toBe(8);
       });
 
       it('has a best estimate based on its Te and sigma', function() {
-        expect(task.get_best()).toBe(7);
+        expect(task.getBest()).toBe(7);
       });
 
       it('has a worst estimate based on its Te and sigma', function() {
-        expect(task.get_worst()).toBe(10);
+        expect(task.getWorst()).toBe(10);
       });
 
       describe('and then loaded with a third subtask', function() {
         beforeEach(function() {
-          task.append_child(Task(1, 2, 20));
+          task.appendChild(Task(1, 2, 20));
         });
 
         it('has an increase of 29 in its 6Te', function() {
-          expect(task.get_6Te()).toBe(79);
+          expect(task.get6Te()).toBe(79);
         });
 
         it('has an increase of 19 in its 6sigma', function() {
-          expect(task.get_6sigma()).toBe(27);
+          expect(task.get6sigma()).toBe(27);
         });
 
         it('has a best estimate of 9', function() {
-          expect(task.get_best()).toBe(9);
+          expect(task.getBest()).toBe(9);
         });
 
         it('has an expected estimate of 10', function() {
-          expect(task.get_expected()).toBe(10);
+          expect(task.getExpected()).toBe(10);
         });
 
         it('has a worst estimate of 18', function() {
-          expect(task.get_worst()).toBe(18);
+          expect(task.getWorst()).toBe(18);
         });
       });
     });
@@ -228,52 +228,52 @@ describe('a default task object', function() {
 
   describe('when loaded with a different subtask', function() {
     beforeEach(function() {
-      task.append_child(Task(2, 4, 8));
+      task.appendChild(Task(2, 4, 8));
     });
 
     it("inherits its child's best estimate", function() {
-      expect(task.get_best()).toBe(2);
+      expect(task.getBest()).toBe(2);
     });
 
     it("inherits its child's expected estimate", function() {
-      expect(task.get_expected()).toBe(4);
+      expect(task.getExpected()).toBe(4);
     });
 
     it("inherits its child's worst estimate", function() {
-      expect(task.get_worst()).toBe(8);
+      expect(task.getWorst()).toBe(8);
     });
   });
 
   describe('when loaded with a tomato', function() {
     beforeEach(function() {
-      task.add_tomato(Tomato('first tomato'));
+      task.addTomato(Tomato('first tomato'));
     });
 
     it('has one tomato', function() {
-      expect(task.get_tomatoes_length()).toBe(1);
+      expect(task.getTomatoesLength()).toBe(1);
     });
 
     it('keeps a copy of the tomato', function() {
-      expect(task.get_tomatoes()[0].get_description()).toBe(
+      expect(task.getTomatoes()[0].getDescription()).toBe(
         'first tomato');
     });
 
     describe('and then loaded with a second tomato', function() {
       beforeEach(function() {
-        task.add_tomato(Tomato('second tomato'));
+        task.addTomato(Tomato('second tomato'));
       });
 
       it('has two tomatoes', function() {
-        expect(task.get_tomatoes_length()).toBe(2);
+        expect(task.getTomatoesLength()).toBe(2);
       });
 
       it('keeps a copy of the first tomato', function() {
-        expect(task.get_tomatoes()[0].get_description()).toBe(
+        expect(task.getTomatoes()[0].getDescription()).toBe(
           'first tomato');
       });
 
       it('keeps a copy of the second tomato', function() {
-        expect(task.get_tomatoes()[1].get_description()).toBe(
+        expect(task.getTomatoes()[1].getDescription()).toBe(
           'second tomato');
       });
     });
@@ -288,26 +288,26 @@ describe('a task with an inital description', function() {
   });
 
   it('stores that description', function() {
-    expect(task.get_description()).toBe('wow wow');
+    expect(task.getDescription()).toBe('wow wow');
   });
 });
 
 describe('a task with an initial estimate of [2, 3, 5]', function() {
-  var task, it_has_an_estimate;
+  var task, itHasAnEstimate;
 
   beforeEach(function() {
     task = Task(2, 3, 5);
   });
 
-  it_has_an_estimate = function(name, value) {
+  itHasAnEstimate = function(name, value) {
     it('has a '+name+' estimate of '+value.toString(), function() {
-      expect(task['get_'+name]()).toBe(value);
+      expect(task['get'+name]()).toBe(value);
     });
   };
 
-  it_has_an_estimate('best', 2);
-  it_has_an_estimate('expected', 3);
-  it_has_an_estimate('worst', 5);
+  itHasAnEstimate('Best', 2);
+  itHasAnEstimate('Expected', 3);
+  itHasAnEstimate('Worst', 5);
 });
 
 describe('a task with an initial estimate and description', function() {
@@ -318,11 +318,11 @@ describe('a task with an initial estimate and description', function() {
   });
 
   it('stores its description', function() {
-    expect(task.get_description()).toBe('take a while');
+    expect(task.getDescription()).toBe('take a while');
   });
 
   it('has the expected 6Te', function() {
-    expect(task.get_6Te()).toBe(104);
+    expect(task.get6Te()).toBe(104);
   });
 });
 

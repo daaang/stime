@@ -20,13 +20,13 @@ const Task = require('../../lib/task');
 
 describe("Task", () => {
 
-  describe("#is_done", () => {
+  describe("#isDone", () => {
     it("returns whether the task has been marked as done", () => {
       let task = Task();
-      expect(task.is_done()).toBe(false);
+      expect(task.isDone()).toBe(false);
 
-      task.set_done();
-      expect(task.is_done()).toBe(true);
+      task.setDone();
+      expect(task.isDone()).toBe(true);
     });
   });
 });
