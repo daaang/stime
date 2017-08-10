@@ -28,5 +28,10 @@ describe("Tomato", () => {
       expect(tomatoTime).toBeGreaterThan(before - 1);
       expect(tomatoTime).toBeLessThan(after + 1);
     });
+
+    it("returns the timestamp the tomato was inited with", () => {
+      let tomato = Tomato([1234, "description"]);
+      expect(tomato.get_time()).toBe(1234);
+    });
   });
 });
