@@ -30,6 +30,16 @@ describe("Tomato", () => {
     expect(tomato.get_time()).toBeLessThan(after + 1);
   });
 
+  it("inits to [Date.now(), arg] with a single arg", () => {
+    let before = Date.now();
+    let tomato = Tomato("holler");
+    let after = Date.now();
+
+    expect(tomato.get_description()).toBe("holler");
+    expect(tomato.get_time()).toBeGreaterThan(before - 1);
+    expect(tomato.get_time()).toBeLessThan(after + 1);
+  });
+
   describe("#get_time", () => {
     it("returns the timestamp the tomato was inited with", () => {
       let tomato = Tomato([1234, "description"]);
