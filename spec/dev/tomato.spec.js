@@ -17,9 +17,17 @@
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
 /* eslint-env mocha */
-/* eslint-disable no-unused-vars */
+const expect = require("chai").expect;
 const Tomato = require("../..").Tomato;
 
-describe("this test environment", () => {
-  it("works", () => {});
+let tomato;
+
+describe("a default Tomato() instance", () => {
+  beforeEach(() => {
+    tomato = Tomato();
+  });
+
+  it("stores a current timestamp", () => {
+    expect(tomato.startTime).to.be.closeTo(Date.now(), 50);
+  });
 });
