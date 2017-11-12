@@ -30,4 +30,8 @@ describe("a default Tomato() instance", () => {
   it("stores a current timestamp", () => {
     expect(tomato.startTime).to.be.closeTo(Date.now(), 50);
   });
+
+  it("stores an empty description", () => {
+    expect(tomato.description).to.equal("");
+  });
 });
