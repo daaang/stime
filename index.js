@@ -16,17 +16,4 @@
 // You should have received a copy of the GNU General Public License
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
-const Task = require('../../lib/task');
-
-describe("Task", () => {
-
-  describe("#isDone", () => {
-    it("returns whether the task has been marked as done", () => {
-      let task = Task();
-      expect(task.isDone()).toBe(false);
-
-      task.setDone();
-      expect(task.isDone()).toBe(true);
-    });
-  });
-});
+module.exports = {};
