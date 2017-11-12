@@ -16,4 +16,10 @@
 // You should have received a copy of the GNU General Public License
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
-module.exports = {};
+/* eslint-env mocha */
+/* eslint-disable no-unused-vars */
+const Tomato = require("../../lib/tomato");
+
+describe("this test environment", () => {
+  it("works", () => {});
+});
