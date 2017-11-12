@@ -18,7 +18,7 @@
 
 /* eslint-env mocha */
 /* eslint-disable no-unused-vars */
-const Tomato = require("../../lib/tomato");
+const Tomato = require("../..").Tomato;
 
 describe("this test environment", () => {
   it("works", () => {});
