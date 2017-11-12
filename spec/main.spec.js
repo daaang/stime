@@ -16,6 +16,12 @@
 // You should have received a copy of the GNU General Public License
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
-module.exports = {
-  "Tomato": require("./lib/tomato")
-};
+/* eslint-env mocha */
+const expect = require("chai").expect;
+const stime = require("..");
+
+describe("stime", () => {
+  it("defines a Tomato property", () => {
+    expect(stime).to.have.property("Tomato");
+  });
+});
