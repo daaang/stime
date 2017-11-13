@@ -67,3 +67,18 @@ describe("Tomato({description: 'hello'})", () => {
     expect(tomato.description).to.equal("hello");
   });
 });
+
+describe("Tomato(...) with all four named args", () => {
+  beforeEach(() => {
+    tomato = Tomato({
+      description: "frogblasting vent-core",
+      workTimeLength: 1000,
+      restTimeLength: 500,
+      startTime: 12345
+    });
+  });
+
+  it("remembers the description", () => {
+    expect(tomato.description).to.equal("frogblasting vent-core");
+  });
+});
