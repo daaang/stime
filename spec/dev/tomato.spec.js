@@ -27,10 +27,6 @@ describe("a default Tomato() instance", () => {
     tomato = Tomato();
   });
 
-  it("stores a current timestamp", () => {
-    expect(tomato.startTime).to.be.closeTo(Date.now(), 50);
-  });
-
   it("stores an empty description", () => {
     expect(tomato.description).to.equal("");
   });
@@ -41,5 +37,19 @@ describe("a default Tomato() instance", () => {
 
   it("assumes 5 minutes of resting time", () => {
     expect(tomato.restTimeLength).to.equal(5 * 60 * 1000);
+  });
+
+  it("stores a current timestamp", () => {
+    expect(tomato.startTime).to.be.closeTo(Date.now(), 50);
+  });
+});
+
+describe("Tomato('reticulating splines')", () => {
+  beforeEach(() => {
+    tomato = Tomato("reticulating splines");
+  });
+
+  it("stores a description of 'reticulating splines'", () => {
+    expect(tomato.description).to.equal("reticulating splines");
   });
 });
