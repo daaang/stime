@@ -38,4 +38,8 @@ describe("a default Tomato() instance", () => {
   it("assumes 25 minutes of working time", () => {
     expect(tomato.workTimeLength).to.equal(25 * 60 * 1000);
   });
+
+  it("assumes 5 minutes of resting time", () => {
+    expect(tomato.restTimeLength).to.equal(5 * 60 * 1000);
+  });
 });
