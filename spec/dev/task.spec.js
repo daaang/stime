@@ -16,7 +16,17 @@
 // You should have received a copy of the GNU General Public License
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
-module.exports = {
-  "Task": require("./lib/task"),
-  "Tomato": require("./lib/tomato")
-};
+/* eslint-env mocha */
+/* eslint-disable no-unused-vars */
+const expect = require("chai").expect;
+const Task = require("../..").Task;
+
+let task;
+
+describe("Task(1, 2, 3)", () => {
+  beforeEach(() => {
+    task = Task(1, 2, 3);
+  });
+
+  it("throws no errors", () => {});
+});
