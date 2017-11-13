@@ -34,4 +34,8 @@ describe("a default Tomato() instance", () => {
   it("stores an empty description", () => {
     expect(tomato.description).to.equal("");
   });
+
+  it("assumes 25 minutes of working time", () => {
+    expect(tomato.workTimeLength).to.equal(25 * 60 * 1000);
+  });
 });
