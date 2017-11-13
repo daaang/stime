@@ -94,3 +94,13 @@ describe("Tomato(...) with all four named args", () => {
     expect(tomato.startTime).to.equal(12345);
   });
 });
+
+describe("Tomato({extraRest: 10*60*1000})", () => {
+  beforeEach(() => {
+    tomato = Tomato({extraRest: 10 * 60 * 1000});
+  });
+
+  it("adds extraRest to the total rest time", () => {
+    expect(tomato.restTimeLength).to.equal(15 * 60 * 1000);
+  });
+});
