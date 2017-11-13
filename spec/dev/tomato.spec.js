@@ -81,4 +81,8 @@ describe("Tomato(...) with all four named args", () => {
   it("remembers the description", () => {
     expect(tomato.description).to.equal("frogblasting vent-core");
   });
+
+  it("remembers the work time length", () => {
+    expect(tomato.workTimeLength).to.equal(1000);
+  });
 });
