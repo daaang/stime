@@ -57,3 +57,13 @@ describe("Tomato('reticulating splines')", () => {
     expect(tomato.startTime).to.be.closeTo(Date.now(), 50);
   });
 });
+
+describe("Tomato({description: 'hello'})", () => {
+  beforeEach(() => {
+    tomato = Tomato({description: "hello"});
+  });
+
+  it("stores a description of 'hello'", () => {
+    expect(tomato.description).to.equal("hello");
+  });
+});
