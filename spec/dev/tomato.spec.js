@@ -89,4 +89,8 @@ describe("Tomato(...) with all four named args", () => {
   it("remembers the rest time length", () => {
     expect(tomato.restTimeLength).to.equal(500);
   });
+
+  it("remembers the start time", () => {
+    expect(tomato.startTime).to.equal(12345);
+  });
 });
