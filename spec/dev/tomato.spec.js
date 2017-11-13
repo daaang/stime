@@ -52,4 +52,8 @@ describe("Tomato('reticulating splines')", () => {
   it("stores a description of 'reticulating splines'", () => {
     expect(tomato.description).to.equal("reticulating splines");
   });
+
+  it("stores a current timestamp", () => {
+    expect(tomato.startTime).to.be.closeTo(Date.now(), 50);
+  });
 });
