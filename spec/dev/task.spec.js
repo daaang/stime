@@ -20,3 +20,13 @@
 /* eslint-disable no-unused-vars */
 const expect = require("chai").expect;
 const Task = require("../..").Task;
+
+let task;
+
+describe("Task(1, 2, 3)", () => {
+  beforeEach(() => {
+    task = Task(1, 2, 3);
+  });
+
+  it("throws no errors", () => {});
+});
