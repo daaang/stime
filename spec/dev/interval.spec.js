@@ -17,6 +17,7 @@
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
 /* eslint-env mocha */
+/* eslint-disable no-unused-expressions */
 const expect = require("chai").expect;
 const Interval = require("../..").Interval;
 
@@ -26,6 +27,15 @@ const describeItsJSON = function(callback) {
   describe("its JSON representation", () => {
     beforeEach(() => {
       json = JSON.parse(JSON.stringify(interval));
+    });
+
+    it("has description, startTime, restTimeLength, and"
+       + " workTimeLength only", () => {
+      expect(Object.keys(json).length).to.equal(4);
+      expect(json.description).to.exist;
+      expect(json.startTime).to.exist;
+      expect(json.restTimeLength).to.exist;
+      expect(json.workTimeLength).to.exist;
     });
 
     callback();
@@ -54,10 +64,6 @@ describe("a default Interval() instance", () => {
   });
 
   describeItsJSON(() => {
-    it("has four items", () => {
-      expect(Object.keys(json).length).to.equal(4);
-    });
-
     it("has an empty string description", () => {
       expect(json.description).to.equal("");
     });
