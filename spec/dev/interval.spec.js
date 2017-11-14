@@ -18,59 +18,59 @@
 
 /* eslint-env mocha */
 const expect = require("chai").expect;
-const Tomato = require("../..").Tomato;
+const Interval = require("../..").Interval;
 
-let tomato;
+let interval;
 
-describe("a default Tomato() instance", () => {
+describe("a default Interval() instance", () => {
   beforeEach(() => {
-    tomato = Tomato();
+    interval = Interval();
   });
 
   it("stores an empty description", () => {
-    expect(tomato.description).to.equal("");
+    expect(interval.description).to.equal("");
   });
 
   it("assumes 25 minutes of working time", () => {
-    expect(tomato.workTimeLength).to.equal(25 * 60 * 1000);
+    expect(interval.workTimeLength).to.equal(25 * 60 * 1000);
   });
 
   it("assumes 5 minutes of resting time", () => {
-    expect(tomato.restTimeLength).to.equal(5 * 60 * 1000);
+    expect(interval.restTimeLength).to.equal(5 * 60 * 1000);
   });
 
   it("stores a current timestamp", () => {
-    expect(tomato.startTime).to.be.closeTo(Date.now(), 50);
+    expect(interval.startTime).to.be.closeTo(Date.now(), 50);
   });
 });
 
-describe("Tomato('reticulating splines')", () => {
+describe("Interval('reticulating splines')", () => {
   beforeEach(() => {
-    tomato = Tomato("reticulating splines");
+    interval = Interval("reticulating splines");
   });
 
   it("stores a description of 'reticulating splines'", () => {
-    expect(tomato.description).to.equal("reticulating splines");
+    expect(interval.description).to.equal("reticulating splines");
   });
 
   it("stores a current timestamp", () => {
-    expect(tomato.startTime).to.be.closeTo(Date.now(), 50);
+    expect(interval.startTime).to.be.closeTo(Date.now(), 50);
   });
 });
 
-describe("Tomato({description: 'hello'})", () => {
+describe("Interval({description: 'hello'})", () => {
   beforeEach(() => {
-    tomato = Tomato({description: "hello"});
+    interval = Interval({description: "hello"});
   });
 
   it("stores a description of 'hello'", () => {
-    expect(tomato.description).to.equal("hello");
+    expect(interval.description).to.equal("hello");
   });
 });
 
-describe("Tomato(...) with all four named args", () => {
+describe("Interval(...) with all four named args", () => {
   beforeEach(() => {
-    tomato = Tomato({
+    interval = Interval({
       description: "frogblasting vent-core",
       workTimeLength: 1000,
       restTimeLength: 500,
@@ -79,28 +79,28 @@ describe("Tomato(...) with all four named args", () => {
   });
 
   it("remembers the description", () => {
-    expect(tomato.description).to.equal("frogblasting vent-core");
+    expect(interval.description).to.equal("frogblasting vent-core");
   });
 
   it("remembers the work time length", () => {
-    expect(tomato.workTimeLength).to.equal(1000);
+    expect(interval.workTimeLength).to.equal(1000);
   });
 
   it("remembers the rest time length", () => {
-    expect(tomato.restTimeLength).to.equal(500);
+    expect(interval.restTimeLength).to.equal(500);
   });
 
   it("remembers the start time", () => {
-    expect(tomato.startTime).to.equal(12345);
+    expect(interval.startTime).to.equal(12345);
   });
 });
 
-describe("Tomato({extraRest: 10*60*1000})", () => {
+describe("Interval({extraRest: 10*60*1000})", () => {
   beforeEach(() => {
-    tomato = Tomato({extraRest: 10 * 60 * 1000});
+    interval = Interval({extraRest: 10 * 60 * 1000});
   });
 
   it("adds extraRest to the total rest time", () => {
-    expect(tomato.restTimeLength).to.equal(15 * 60 * 1000);
+    expect(interval.restTimeLength).to.equal(15 * 60 * 1000);
   });
 });

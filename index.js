@@ -18,5 +18,5 @@
 
 module.exports = {
   "Task": require("./lib/task"),
-  "Tomato": require("./lib/tomato")
+  "Interval": require("./lib/tomato")
 };
