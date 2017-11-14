@@ -20,7 +20,7 @@
 const expect = require("chai").expect;
 const Interval = require("../..").Interval;
 
-let interval;
+let interval, json;
 
 describe("a default Interval() instance", () => {
   beforeEach(() => {
@@ -44,8 +44,6 @@ describe("a default Interval() instance", () => {
   });
 
   describe("its JSON representation", () => {
-    let json;
-
     beforeEach(() => {
       json = JSON.parse(JSON.stringify(interval));
     });
