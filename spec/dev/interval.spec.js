@@ -54,6 +54,10 @@ describe("a default Interval() instance", () => {
   });
 
   describeItsJSON(() => {
+    it("has four items", () => {
+      expect(Object.keys(json).length).to.equal(4);
+    });
+
     it("has an empty string description", () => {
       expect(json.description).to.equal("");
     });
