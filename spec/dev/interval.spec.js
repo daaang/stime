@@ -24,18 +24,26 @@ const Interval = require("../..").Interval;
 let interval, json;
 
 const describeItsJSON = function(callback) {
+  const keys = [
+    "description",
+    "startTime",
+    "restTimeLength",
+    "workTimeLength"
+  ];
+
   describe("its JSON representation", () => {
     beforeEach(() => {
       json = JSON.parse(JSON.stringify(interval));
     });
 
-    it("has description, startTime, restTimeLength, and"
-       + " workTimeLength only", () => {
-      expect(Object.keys(json).length).to.equal(4);
-      expect(json.description).to.exist;
-      expect(json.startTime).to.exist;
-      expect(json.restTimeLength).to.exist;
-      expect(json.workTimeLength).to.exist;
+    it("has " + keys.join(", ") + " only", () => {
+      let keyCount = 0;
+      for (const key in json) {
+        keyCount += 1;
+        expect(keys).to.contain(key);
+      }
+
+      expect(keyCount).to.equal(keys.length);
     });
 
     callback();
@@ -66,6 +74,10 @@ describe("a default Interval() instance", () => {
   describeItsJSON(() => {
     it("has an empty string description", () => {
       expect(json.description).to.equal("");
+    });
+
+    it("has 25 minutes of working time", () => {
+      expect(json.workTimeLength).to.equal(25 * 60 * 1000);
     });
   });
 });
