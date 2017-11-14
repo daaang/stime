@@ -42,6 +42,18 @@ describe("a default Interval() instance", () => {
   it("stores a current timestamp", () => {
     expect(interval.startTime).to.be.closeTo(Date.now(), 50);
   });
+
+  describe("its JSON representation", () => {
+    let json;
+
+    beforeEach(() => {
+      json = JSON.parse(JSON.stringify(interval));
+    });
+
+    it("has an empty string description", () => {
+      expect(json.description).to.equal("");
+    });
+  });
 });
 
 describe("Interval('reticulating splines')", () => {
