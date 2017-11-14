@@ -91,6 +91,8 @@ describe("Interval('reticulating splines')", () => {
   it("stores a current timestamp", () => {
     expect(interval.startTime).to.be.closeTo(Date.now(), 50);
   });
+
+  describeItsJSON();
 });
 
 describe("Interval({description: 'hello'})", () => {
@@ -101,6 +103,8 @@ describe("Interval({description: 'hello'})", () => {
   it("stores a description of 'hello'", () => {
     expect(interval.description).to.equal("hello");
   });
+
+  describeItsJSON();
 });
 
 describe("Interval(...) with all four named args", () => {
@@ -128,6 +132,8 @@ describe("Interval(...) with all four named args", () => {
   it("remembers the start time", () => {
     expect(interval.startTime).to.equal(12345);
   });
+
+  describeItsJSON();
 });
 
 describe("Interval({extraRest: 10*60*1000})", () => {
@@ -138,4 +144,6 @@ describe("Interval({extraRest: 10*60*1000})", () => {
   it("adds extraRest to the total rest time", () => {
     expect(interval.restTimeLength).to.equal(15 * 60 * 1000);
   });
+
+  describeItsJSON();
 });
