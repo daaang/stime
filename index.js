@@ -17,6 +17,6 @@
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
 module.exports = {
-  "Task": require("./lib/task"),
-  "Interval": require("./lib/tomato")
+  "Interval": require("./lib/interval"),
+  "Task": require("./lib/task")
 };
