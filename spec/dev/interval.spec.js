@@ -76,15 +76,7 @@ describe("a default Interval() instance", () => {
     expect(interval.startTime).to.be.closeTo(Date.now(), 50);
   });
 
-  describeItsJSON(() => {
-    it("has an empty string description", () => {
-      expect(json.description).to.equal("");
-    });
-
-    it("has 25 minutes of working time", () => {
-      expect(json.workTimeLength).to.equal(25 * 60 * 1000);
-    });
-  });
+  describeItsJSON(() => {});
 });
 
 describe("Interval('reticulating splines')", () => {
