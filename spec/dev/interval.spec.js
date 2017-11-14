@@ -22,6 +22,16 @@ const Interval = require("../..").Interval;
 
 let interval, json;
 
+const describeItsJSON = function(callback) {
+  describe("its JSON representation", () => {
+    beforeEach(() => {
+      json = JSON.parse(JSON.stringify(interval));
+    });
+
+    callback();
+  });
+};
+
 describe("a default Interval() instance", () => {
   beforeEach(() => {
     interval = Interval();
@@ -43,11 +53,7 @@ describe("a default Interval() instance", () => {
     expect(interval.startTime).to.be.closeTo(Date.now(), 50);
   });
 
-  describe("its JSON representation", () => {
-    beforeEach(() => {
-      json = JSON.parse(JSON.stringify(interval));
-    });
-
+  describeItsJSON(() => {
     it("has an empty string description", () => {
       expect(json.description).to.equal("");
     });
