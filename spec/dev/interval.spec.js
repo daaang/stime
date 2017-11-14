@@ -46,6 +46,11 @@ const describeItsJSON = function(callback) {
       expect(keyCount).to.equal(keys.length);
     });
 
+    it("has values matching the source interval", () => {
+      for (const key of keys)
+        expect(json[key]).to.equal(interval[key]);
+    });
+
     callback();
   });
 };
