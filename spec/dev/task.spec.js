@@ -23,9 +23,9 @@ const Task = require("../..").Task;
 
 let task;
 
-describe("Task(1, 2, 3)", () => {
+describe("Task()", () => {
   beforeEach(() => {
-    task = Task(1, 2, 3);
+    task = Task();
   });
 
   it("throws no errors", () => {});
