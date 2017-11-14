@@ -17,7 +17,6 @@
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
 /* eslint-env mocha */
-/* eslint-disable no-unused-vars */
 const expect = require("chai").expect;
 const Task = require("../..").Task;
 
@@ -30,5 +29,9 @@ describe("Task()", () => {
 
   it("has an empty string for a description", () => {
     expect(task.description).to.equal("");
+  });
+
+  it("has a best-case estimate of 0", () => {
+    expect(task.best).to.equal(0);
   });
 });
