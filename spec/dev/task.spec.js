@@ -28,5 +28,7 @@ describe("Task()", () => {
     task = Task();
   });
 
-  it("throws no errors", () => {});
+  it("has an empty string for a description", () => {
+    expect(task.description).to.equal("");
+  });
 });
