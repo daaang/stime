@@ -23,7 +23,7 @@ const Interval = require("../..").Interval;
 
 let interval, json;
 
-const describeItsJSON = function(callback) {
+const describeItsJSON = function(callback = () => {}) {
   const keys = [
     "description",
     "startTime",
@@ -76,7 +76,7 @@ describe("a default Interval() instance", () => {
     expect(interval.startTime).to.be.closeTo(Date.now(), 50);
   });
 
-  describeItsJSON(() => {});
+  describeItsJSON();
 });
 
 describe("Interval('reticulating splines')", () => {
