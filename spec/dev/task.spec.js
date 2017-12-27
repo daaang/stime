@@ -42,4 +42,8 @@ describe("Task()", () => {
   it("has a worst-case estimate of 0", () => {
     expect(task.worst).to.equal(0);
   });
+
+  it("has an empty list of intervals", () => {
+    expect(task.intervals).to.deep.equal([]);
+  });
 });
