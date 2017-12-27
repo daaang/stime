@@ -18,13 +18,13 @@
 
 /* eslint-env mocha */
 const expect = require("chai").expect;
-const Task = require("../..").Task;
+const stime = require("../..");
 
 let task;
 
 describe("Task()", () => {
   beforeEach(() => {
-    task = Task();
+    task = stime.Task();
   });
 
   it("has an empty string for a description", () => {

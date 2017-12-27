@@ -17,9 +17,8 @@
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
 /* eslint-env mocha */
-/* eslint-disable no-unused-expressions */
 const expect = require("chai").expect;
-const Interval = require("../..").Interval;
+const stime = require("../..");
 
 let interval, json;
 
@@ -57,7 +56,7 @@ const describeItsJSON = function(callback = () => {}) {
 
 describe("a default Interval() instance", () => {
   beforeEach(() => {
-    interval = Interval();
+    interval = stime.Interval();
   });
 
   it("stores an empty description", () => {
@@ -81,7 +80,7 @@ describe("a default Interval() instance", () => {
 
 describe("Interval('reticulating splines')", () => {
   beforeEach(() => {
-    interval = Interval("reticulating splines");
+    interval = stime.Interval("reticulating splines");
   });
 
   it("stores a description of 'reticulating splines'", () => {
@@ -97,7 +96,7 @@ describe("Interval('reticulating splines')", () => {
 
 describe("Interval({description: 'hello'})", () => {
   beforeEach(() => {
-    interval = Interval({description: "hello"});
+    interval = stime.Interval({description: "hello"});
   });
 
   it("stores a description of 'hello'", () => {
@@ -109,7 +108,7 @@ describe("Interval({description: 'hello'})", () => {
 
 describe("Interval(...) with all four named args", () => {
   beforeEach(() => {
-    interval = Interval({
+    interval = stime.Interval({
       description: "frogblasting vent-core",
       workTimeLength: 1000,
       restTimeLength: 500,
@@ -138,7 +137,7 @@ describe("Interval(...) with all four named args", () => {
 
 describe("Interval({extraRest: 10*60*1000})", () => {
   beforeEach(() => {
-    interval = Interval({extraRest: 10 * 60 * 1000});
+    interval = stime.Interval({extraRest: 10 * 60 * 1000});
   });
 
   it("adds extraRest to the total rest time", () => {
