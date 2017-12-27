@@ -38,4 +38,8 @@ describe("Task()", () => {
   it("has a nominal estimate of 0", () => {
     expect(task.nominal).to.equal(0);
   });
+
+  it("has a worst-case estimate of 0", () => {
+    expect(task.worst).to.equal(0);
+  });
 });
