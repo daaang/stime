@@ -38,6 +38,10 @@ const itHasEstimates = function(best, nominal, worst) {
   it("has a mean of " + (best + 4 * nominal + worst) / 6, function() {
     expect(task.mean).to.equal((best + 4 * nominal + worst) / 6);
   });
+
+  it("has a deviation of " + (worst - best) / 6, function() {
+    expect(task.deviation).to.equal((worst - best) / 6);
+  });
 };
 
 describe("Task()", () => {
