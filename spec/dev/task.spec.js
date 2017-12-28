@@ -71,5 +71,15 @@ describe("Task()", () => {
     it("has a nominal estimate of 1", () => {
       expect(task.nominal).to.equal(1);
     });
+
+    describe("and setting a nominal estimate of 2", () => {
+      beforeEach(() => {
+        task.nominal = 2;
+      });
+
+      it("has a nominal estimate of 2", () => {
+        expect(task.nominal).to.equal(2);
+      });
+    });
   });
 });
