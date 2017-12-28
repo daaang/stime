@@ -67,6 +67,14 @@ describe("Task()", () => {
     expect(task.intervals).to.deep.equal([]);
   });
 
+  describe("after marking as complete", () => {
+    beforeEach(() => {
+      task.complete();
+    });
+
+    it("runs", () => {});
+  });
+
   describe("after setting a best-case estimate of 1", () => {
     beforeEach(() => {
       task.best = 1;
