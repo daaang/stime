@@ -108,14 +108,14 @@ describe("Task()", () => {
       task.best = 5;
     });
 
+    itHasEstimates(5, 5, 5);
+
     describe("and then setting a nominal estimate of 3", () => {
       beforeEach(() => {
         task.nominal = 3;
       });
 
-      it("has a best-case estimate of 3", () => {
-        expect(task.best).to.equal(3);
-      });
+      itHasEstimates(3, 3, 3);
     });
   });
 
@@ -125,5 +125,13 @@ describe("Task()", () => {
     });
 
     itHasEstimates(1, 1, 1);
+
+    describe("and then setting a nominal estimate of 2", () => {
+      beforeEach(() => {
+        task.nominal = 2;
+      });
+
+      itHasEstimates(2, 2, 2);
+    });
   });
 });
