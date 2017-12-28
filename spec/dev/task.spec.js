@@ -75,6 +75,11 @@ describe("Task()", () => {
     it("is complete", () => {
       expect(task.isComplete()).to.equal(true);
     });
+
+    it("can be marked incomplete", () => {
+      task.incomplete();
+      expect(task.isComplete()).to.equal(false);
+    });
   });
 
   describe("after setting a best-case estimate of 1", () => {
