@@ -22,6 +22,20 @@ const stime = require("../..");
 
 let task;
 
+const itHasEstimates = function(best, nominal, worst) {
+  it("has a best-case estimate of " + best, function() {
+    expect(task.best).to.equal(best);
+  });
+
+  it("has a nominal estimate of " + nominal, function() {
+    expect(task.nominal).to.equal(nominal);
+  });
+
+  it("has a worst-case estimate of " + worst, function() {
+    expect(task.worst).to.equal(worst);
+  });
+};
+
 describe("Task()", () => {
   beforeEach(() => {
     task = stime.Task();
@@ -31,17 +45,7 @@ describe("Task()", () => {
     expect(task.description).to.equal("");
   });
 
-  it("has a best-case estimate of 0", () => {
-    expect(task.best).to.equal(0);
-  });
-
-  it("has a nominal estimate of 0", () => {
-    expect(task.nominal).to.equal(0);
-  });
-
-  it("has a worst-case estimate of 0", () => {
-    expect(task.worst).to.equal(0);
-  });
+  itHasEstimates(0, 0, 0);
 
   it("has a mean of 0", () => {
     expect(task.mean).to.equal(0);
@@ -64,68 +68,28 @@ describe("Task()", () => {
       task.best = 1;
     });
 
-    it("has a best-case estimate of 1", () => {
-      expect(task.best).to.equal(1);
-    });
-
-    it("has a nominal estimate of 1", () => {
-      expect(task.nominal).to.equal(1);
-    });
-
-    it("has a worst-case estimate of 1", () => {
-      expect(task.worst).to.equal(1);
-    });
+    itHasEstimates(1, 1, 1);
 
     describe("and setting a nominal estimate of 2", () => {
       beforeEach(() => {
         task.nominal = 2;
       });
 
-      it("has a best-case estimate of 1", () => {
-        expect(task.best).to.equal(1);
-      });
-
-      it("has a nominal estimate of 2", () => {
-        expect(task.nominal).to.equal(2);
-      });
-
-      it("has a worst-case estimate of 2", () => {
-        expect(task.worst).to.equal(2);
-      });
+      itHasEstimates(1, 2, 2);
 
       describe("and setting a worst-case estimate of 3", () => {
         beforeEach(() => {
           task.worst = 3;
         });
 
-        it("has a best-case estimate of 1", () => {
-          expect(task.best).to.equal(1);
-        });
-
-        it("has a nominal estimate of 2", () => {
-          expect(task.nominal).to.equal(2);
-        });
-
-        it("has a worst-case estimate of 3", () => {
-          expect(task.worst).to.equal(3);
-        });
+        itHasEstimates(1, 2, 3);
 
         describe("then setting a new best-case of 5", () => {
           beforeEach(() => {
             task.best = 5;
           });
 
-          it("has a best-case estimate of 5", () => {
-            expect(task.best).to.equal(5);
-          });
-
-          it("has a nominal estimate of 5", () => {
-            expect(task.nominal).to.equal(5);
-          });
-
-          it("has a worst-case estimate of 5", () => {
-            expect(task.worst).to.equal(5);
-          });
+          itHasEstimates(5, 5, 5);
         });
 
         describe("then setting a new worst-case of 0", () => {
@@ -133,17 +97,7 @@ describe("Task()", () => {
             task.worst = 0;
           });
 
-          it("has a best-case estimate of 0", () => {
-            expect(task.best).to.equal(0);
-          });
-
-          it("has a nominal estimate of 0", () => {
-            expect(task.nominal).to.equal(0);
-          });
-
-          it("has a worst-case estimate of 0", () => {
-            expect(task.worst).to.equal(0);
-          });
+          itHasEstimates(0, 0, 0);
         });
       });
     });
@@ -170,16 +124,6 @@ describe("Task()", () => {
       task.worst = 1;
     });
 
-    it("has a best-case estimate of 1", () => {
-      expect(task.best).to.equal(1);
-    });
-
-    it("has a nominal estimate of 1", () => {
-      expect(task.nominal).to.equal(1);
-    });
-
-    it("has a worst-case estimate of 1", () => {
-      expect(task.worst).to.equal(1);
-    });
+    itHasEstimates(1, 1, 1);
   });
 });
