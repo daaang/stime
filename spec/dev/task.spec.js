@@ -47,6 +47,10 @@ describe("Task()", () => {
     expect(task.mean).to.equal(0);
   });
 
+  it("has a deviation of 0", () => {
+    expect(task.deviation).to.equal(0);
+  });
+
   it("has an empty list of subtasks", () => {
     expect(task.subtasks).to.deep.equal([]);
   });
