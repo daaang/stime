@@ -34,6 +34,10 @@ const itHasEstimates = function(best, nominal, worst) {
   it("has a worst-case estimate of " + worst, function() {
     expect(task.worst).to.equal(worst);
   });
+
+  it("has a mean of " + (best + 4 * nominal + worst) / 6, function() {
+    expect(task.mean).to.equal((best + 4 * nominal + worst) / 6);
+  });
 };
 
 describe("Task()", () => {
