@@ -43,6 +43,10 @@ describe("Task()", () => {
     expect(task.worst).to.equal(0);
   });
 
+  it("has an empty list of subtasks", () => {
+    expect(task.subtasks).to.deep.equal([]);
+  });
+
   it("has an empty list of intervals", () => {
     expect(task.intervals).to.deep.equal([]);
   });
