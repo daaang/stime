@@ -34,11 +34,23 @@ const itHasEstimates = function(best, nominal, worst) {
   it("has a worst-case estimate of " + worst, function() {
     expect(task.worst).to.equal(worst);
   });
+
+  it("has a mean of " + (best + 4 * nominal + worst) / 6, function() {
+    expect(task.mean).to.equal((best + 4 * nominal + worst) / 6);
+  });
+
+  it("has a deviation of " + (worst - best) / 6, function() {
+    expect(task.deviation).to.equal((worst - best) / 6);
+  });
 };
 
 describe("Task()", () => {
   beforeEach(() => {
     task = stime.Task();
+  });
+
+  it("is incomplete", () => {
+    expect(task.isComplete()).to.equal(false);
   });
 
   it("has an empty string for a description", () => {
@@ -61,6 +73,21 @@ describe("Task()", () => {
 
   it("has an empty list of intervals", () => {
     expect(task.intervals).to.deep.equal([]);
+  });
+
+  describe("after marking as complete", () => {
+    beforeEach(() => {
+      task.complete();
+    });
+
+    it("is complete", () => {
+      expect(task.isComplete()).to.equal(true);
+    });
+
+    it("can be marked incomplete", () => {
+      task.incomplete();
+      expect(task.isComplete()).to.equal(false);
+    });
   });
 
   describe("after setting a best-case estimate of 1", () => {
@@ -156,6 +183,30 @@ describe("Task()", () => {
 
         itHasEstimates(3, 5, 10);
       });
+    });
+  });
+
+  describe("after setting a best-case estimate of 5", () => {
+    beforeEach(() => {
+      task.best = 5;
+    });
+
+    itHasEstimates(5, 5, 5);
+
+    describe("and then setting a worst-case estimate of 15", () => {
+      beforeEach(() => {
+        task.worst = 15;
+      });
+
+      itHasEstimates(5, 10, 15);
+    });
+
+    describe("and then setting a worst-case estimate of 16", () => {
+      beforeEach(() => {
+        task.worst = 16;
+      });
+
+      itHasEstimates(5, 11, 16);
     });
   });
 });
