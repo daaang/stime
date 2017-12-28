@@ -17,16 +17,145 @@
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
 /* eslint-env mocha */
-/* eslint-disable no-unused-vars */
 const expect = require("chai").expect;
-const Task = require("../..").Task;
+const stime = require("../..");
 
 let task;
 
-describe("Task(1, 2, 3)", () => {
-  beforeEach(() => {
-    task = Task(1, 2, 3);
+const itHasEstimates = function(best, nominal, worst) {
+  it("has a best-case estimate of " + best, function() {
+    expect(task.best).to.equal(best);
   });
 
-  it("throws no errors", () => {});
+  it("has a nominal estimate of " + nominal, function() {
+    expect(task.nominal).to.equal(nominal);
+  });
+
+  it("has a worst-case estimate of " + worst, function() {
+    expect(task.worst).to.equal(worst);
+  });
+};
+
+describe("Task()", () => {
+  beforeEach(() => {
+    task = stime.Task();
+  });
+
+  it("has an empty string for a description", () => {
+    expect(task.description).to.equal("");
+  });
+
+  itHasEstimates(0, 0, 0);
+
+  it("has a mean of 0", () => {
+    expect(task.mean).to.equal(0);
+  });
+
+  it("has a deviation of 0", () => {
+    expect(task.deviation).to.equal(0);
+  });
+
+  it("has an empty list of subtasks", () => {
+    expect(task.subtasks).to.deep.equal([]);
+  });
+
+  it("has an empty list of intervals", () => {
+    expect(task.intervals).to.deep.equal([]);
+  });
+
+  describe("after setting a best-case estimate of 1", () => {
+    beforeEach(() => {
+      task.best = 1;
+    });
+
+    itHasEstimates(1, 1, 1);
+
+    describe("and setting a nominal estimate of 2", () => {
+      beforeEach(() => {
+        task.nominal = 2;
+      });
+
+      itHasEstimates(1, 2, 2);
+
+      describe("and setting a worst-case estimate of 3", () => {
+        beforeEach(() => {
+          task.worst = 3;
+        });
+
+        itHasEstimates(1, 2, 3);
+
+        describe("then setting a new best-case of 5", () => {
+          beforeEach(() => {
+            task.best = 5;
+          });
+
+          itHasEstimates(5, 5, 5);
+        });
+
+        describe("then setting a new worst-case of 0", () => {
+          beforeEach(() => {
+            task.worst = 0;
+          });
+
+          itHasEstimates(0, 0, 0);
+        });
+      });
+    });
+  });
+
+  describe("after setting a best-case estimate of 5", () => {
+    beforeEach(() => {
+      task.best = 5;
+    });
+
+    itHasEstimates(5, 5, 5);
+
+    describe("and then setting a nominal estimate of 3", () => {
+      beforeEach(() => {
+        task.nominal = 3;
+      });
+
+      itHasEstimates(3, 3, 3);
+    });
+  });
+
+  describe("after setting a worst-case estimate of 1", () => {
+    beforeEach(() => {
+      task.worst = 1;
+    });
+
+    itHasEstimates(1, 1, 1);
+
+    describe("and then setting a nominal estimate of 2", () => {
+      beforeEach(() => {
+        task.nominal = 2;
+      });
+
+      itHasEstimates(2, 2, 2);
+    });
+  });
+
+  describe("after setting a worst-case estimate of 10", () => {
+    beforeEach(() => {
+      task.worst = 10;
+    });
+
+    itHasEstimates(10, 10, 10);
+
+    describe("and then setting a nominal estimate of 5", () => {
+      beforeEach(() => {
+        task.nominal = 5;
+      });
+
+      itHasEstimates(5, 5, 10);
+
+      describe("and then setting a best-case estimate of 3", () => {
+        beforeEach(() => {
+          task.best = 3;
+        });
+
+        itHasEstimates(3, 5, 10);
+      });
+    });
+  });
 });
