@@ -192,5 +192,13 @@ describe("Task()", () => {
 
       itHasEstimates(5, 10, 15);
     });
+
+    describe("and then setting a worst-case estimate of 16", () => {
+      beforeEach(() => {
+        task.worst = 16;
+      });
+
+      itHasEstimates(5, 11, 16);
+    });
   });
 });
