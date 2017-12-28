@@ -58,4 +58,14 @@ describe("Task()", () => {
   it("has an empty list of intervals", () => {
     expect(task.intervals).to.deep.equal([]);
   });
+
+  describe("after setting a best-case estimate of 1", () => {
+    beforeEach(() => {
+      task.best = 1;
+    });
+
+    it("has a best-case estimate of 1", () => {
+      expect(task.best).to.equal(1);
+    });
+  });
 });
