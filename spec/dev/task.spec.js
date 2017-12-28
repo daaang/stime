@@ -41,6 +41,10 @@ describe("Task()", () => {
     task = stime.Task();
   });
 
+  it("is incomplete", () => {
+    expect(task.isComplete()).to.equal(false);
+  });
+
   it("has an empty string for a description", () => {
     expect(task.description).to.equal("");
   });
