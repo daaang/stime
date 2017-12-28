@@ -72,7 +72,9 @@ describe("Task()", () => {
       task.complete();
     });
 
-    it("runs", () => {});
+    it("is complete", () => {
+      expect(task.isComplete()).to.equal(true);
+    });
   });
 
   describe("after setting a best-case estimate of 1", () => {
