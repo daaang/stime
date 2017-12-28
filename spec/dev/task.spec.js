@@ -149,6 +149,22 @@ describe("Task()", () => {
     });
   });
 
+  describe("after setting a best-case estimate of 5", () => {
+    beforeEach(() => {
+      task.best = 5;
+    });
+
+    describe("and then setting a nominal estimate of 3", () => {
+      beforeEach(() => {
+        task.nominal = 3;
+      });
+
+      it("has a best-case estimate of 3", () => {
+        expect(task.best).to.equal(3);
+      });
+    });
+  });
+
   describe("after setting a worst-case estimate of 1", () => {
     beforeEach(() => {
       task.worst = 1;
