@@ -98,6 +98,14 @@ describe("Task()", () => {
     });
   });
 
+  describe("after adding a 3,5,8 child", () => {
+    beforeEach(() => {
+      task.subtasks.push(stime.Task(3, 5, 8));
+    });
+
+    itHasEstimates(3, 5, 8);
+  });
+
   describe("after setting a best-case estimate of 1", () => {
     beforeEach(() => {
       task.best = 1;
