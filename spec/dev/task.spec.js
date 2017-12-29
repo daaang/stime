@@ -211,4 +211,14 @@ describe("Task('holler dollar')", () => {
   it("has a description of 'holler dollar'", () => {
     expect(task.description).to.equal("holler dollar");
   });
+
+  itHasEstimates(0, 0, 0);
+});
+
+describe("Task(2, 4, 8)", () => {
+  beforeEach(() => {
+    task = stime.Task(2, 4, 8);
+  });
+
+  itHasEstimates(2, 4, 8);
 });
