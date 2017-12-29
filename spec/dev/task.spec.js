@@ -220,5 +220,21 @@ describe("Task(2, 4, 8)", () => {
     task = stime.Task(2, 4, 8);
   });
 
+  it("has an empty string for a description", () => {
+    expect(task.description).to.equal("");
+  });
+
   itHasEstimates(2, 4, 8);
+});
+
+describe("Task(5, 8, 13, 'fibonacci')", () => {
+  beforeEach(() => {
+    task = stime.Task(5, 8, 13, "fibonacci");
+  });
+
+  it("has a description of 'fibonacci'", () => {
+    expect(task.description).to.equal("fibonacci");
+  });
+
+  itHasEstimates(5, 8, 13);
 });
