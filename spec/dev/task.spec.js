@@ -44,6 +44,12 @@ const itHasEstimates = function(best, nominal, worst) {
   });
 };
 
+describe("Task", () => {
+  it("errors when given two arguments", () => {
+    expect(() => { stime.Task(1, 2); }).to.throw();
+  });
+});
+
 describe("Task()", () => {
   beforeEach(() => {
     task = stime.Task();
