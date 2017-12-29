@@ -49,8 +49,14 @@ describe("Task", () => {
     expect(() => { stime.Task(1, 2); }).to.throw();
   });
 
-  it("errors when given invalid estimates", () => {
+  it("errors when given out-of-order estimates", () => {
     expect(() => { stime.Task(1, 3, 2); }).to.throw();
+    expect(() => { stime.Task(2, 1, 3); }).to.throw();
+    expect(() => { stime.Task(3, 2, 1); }).to.throw();
+  });
+
+  it("errors when given a description as an estimate", () => {
+    expect(() => { stime.Task("hey", 2, 3); }).to.throw();
   });
 });
 
