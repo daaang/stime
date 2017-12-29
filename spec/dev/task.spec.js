@@ -104,6 +104,16 @@ describe("Task()", () => {
     });
 
     itHasEstimates(3, 5, 8);
+
+    describe("and then adding a 1,2,3 child", () => {
+      beforeEach(() => {
+        task.subtasks.push(stime.Task(1, 2, 3));
+      });
+
+      it("has a nominal estimate of 7", () => {
+        expect(task.nominal).to.equal(7);
+      });
+    });
   });
 
   describe("after setting a best-case estimate of 1", () => {
