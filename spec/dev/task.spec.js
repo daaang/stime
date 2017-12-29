@@ -59,14 +59,6 @@ describe("Task()", () => {
 
   itHasEstimates(0, 0, 0);
 
-  it("has a mean of 0", () => {
-    expect(task.mean).to.equal(0);
-  });
-
-  it("has a deviation of 0", () => {
-    expect(task.deviation).to.equal(0);
-  });
-
   it("has an empty list of subtasks", () => {
     expect(task.subtasks).to.deep.equal([]);
   });
@@ -208,5 +200,15 @@ describe("Task()", () => {
 
       itHasEstimates(5, 11, 16);
     });
+  });
+});
+
+describe("Task('holler dollar')", () => {
+  beforeEach(() => {
+    task = stime.Task("holler dollar");
+  });
+
+  it("has a description of 'holler dollar'", () => {
+    expect(task.description).to.equal("holler dollar");
   });
 });
