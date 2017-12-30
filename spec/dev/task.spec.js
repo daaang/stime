@@ -115,6 +115,14 @@ describe("Task()", () => {
       itHasEstimates(2, 5, 8);
     });
 
+    describe("and then setting the nominal to 4", () => {
+      beforeEach(() => {
+        task.nominal = 4;
+      });
+
+      itHasEstimates(3, 4, 8);
+    });
+
     describe("and then adding a 1,2,3 child", () => {
       beforeEach(() => {
         task.subtasks.push(stime.Task(1, 2, 3));
