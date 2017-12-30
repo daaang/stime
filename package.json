@@ -29,5 +29,9 @@
     "eslint-plugin-standard": "^3.0.1",
     "istanbul": "^0.4.5",
     "mocha": "^4.0.1"
+  },
+  "dependencies": {
+    "compute-erf": "^3.0.3",
+    "compute-erfinv": "^3.0.1"
   }
 }
