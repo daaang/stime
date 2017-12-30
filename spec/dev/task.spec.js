@@ -35,12 +35,14 @@ const itHasEstimates = function(best, nominal, worst) {
     expect(task.worst).to.equal(worst);
   });
 
-  it("has a mean of " + (best + 4 * nominal + worst) / 6, function() {
-    expect(task.mean).to.equal((best + 4 * nominal + worst) / 6);
+  const mean = (best + 4 * nominal + worst) / 6;
+  it("has a mean of " + mean, function() {
+    expect(task.mean).to.be.closeTo(mean, 0.01);
   });
 
-  it("has a deviation of " + (worst - best) / 6, function() {
-    expect(task.deviation).to.equal((worst - best) / 6);
+  const deviation = (worst - best) / 6;
+  it("has a deviation of " + deviation, function() {
+    expect(task.deviation).to.be.closeTo(deviation, 0.01);
   });
 };
 
