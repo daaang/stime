@@ -107,6 +107,14 @@ describe("Task()", () => {
 
     itHasEstimates(3, 5, 8);
 
+    describe("and then setting the best-case to 2", () => {
+      beforeEach(() => {
+        task.best = 2;
+      });
+
+      itHasEstimates(2, 5, 8);
+    });
+
     describe("and then adding a 1,2,3 child", () => {
       beforeEach(() => {
         task.subtasks.push(stime.Task(1, 2, 3));
