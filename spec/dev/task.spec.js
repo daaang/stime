@@ -355,17 +355,31 @@ describe("Task()", () => {
 
   describe("after adding six nested [1, 2, 10] children", () => {
     beforeEach(() => {
+      // root task
+      // |-- child1
+      // |   |-- child3
+      // |   |   |-- [1, 2, 10]
+      // |   |   `-- [1, 2, 10]
+      // |   |-- [1, 2, 10]
+      // |   `-- [1, 2, 10]
+      // `-- child2
+      //     |-- [1, 2, 10]
+      //     `-- [1, 2, 10]
       const child1 = stime.Task();
       const child2 = stime.Task();
+      const child3 = stime.Task();
+
       task.subtasks.push(child1);
       task.subtasks.push(child2);
+
+      child1.subtasks.push(child3);
 
       child1.subtasks.push(stime.Task(1, 2, 10));
       child1.subtasks.push(stime.Task(1, 2, 10));
       child2.subtasks.push(stime.Task(1, 2, 10));
       child2.subtasks.push(stime.Task(1, 2, 10));
-      child2.subtasks.push(stime.Task(1, 2, 10));
-      child2.subtasks.push(stime.Task(1, 2, 10));
+      child3.subtasks.push(stime.Task(1, 2, 10));
+      child3.subtasks.push(stime.Task(1, 2, 10));
     });
 
     it("has a best-case estimate of 8", () => {
