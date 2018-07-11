@@ -175,6 +175,14 @@ describe("Task()", () => {
       itHasEstimates(10, 10, 10);
     });
 
+    describe("and then setting the worst-case to 1", () => {
+      beforeEach(() => {
+        task.worst = 1;
+      });
+
+      itHasEstimates(1, 1, 1);
+    });
+
     describe("and then adding a 1,2,3 child", () => {
       beforeEach(() => {
         task.subtasks.push(stime.Task(1, 2, 3));
