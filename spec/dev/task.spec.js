@@ -329,4 +329,19 @@ describe("Task()", () => {
       itHasEstimates(5, 11, 16);
     });
   });
+
+  describe("after adding six [1, 2, 10] children", () => {
+    beforeEach(() => {
+      task.subtasks.push(stime.Task(1, 2, 10));
+      task.subtasks.push(stime.Task(1, 2, 10));
+      task.subtasks.push(stime.Task(1, 2, 10));
+      task.subtasks.push(stime.Task(1, 2, 10));
+      task.subtasks.push(stime.Task(1, 2, 10));
+      task.subtasks.push(stime.Task(1, 2, 10));
+    });
+
+    it("has a best-case estimate of 8", () => {
+      expect(task.best).to.equal(8);
+    });
+  });
 });
