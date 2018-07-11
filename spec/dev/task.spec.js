@@ -175,6 +175,22 @@ describe("Task()", () => {
       itHasEstimates(10, 10, 10);
     });
 
+    describe("and then setting the nominal-case to 10", () => {
+      beforeEach(() => {
+        task.nominal = 10;
+      });
+
+      itHasEstimates(3, 10, 10);
+    });
+
+    describe("and then setting the nominal-case to 1", () => {
+      beforeEach(() => {
+        task.nominal = 1;
+      });
+
+      itHasEstimates(1, 1, 8);
+    });
+
     describe("and then setting the worst-case to 1", () => {
       beforeEach(() => {
         task.worst = 1;
