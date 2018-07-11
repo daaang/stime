@@ -352,4 +352,32 @@ describe("Task()", () => {
       expect(task.worst).to.equal(30);
     });
   });
+
+  describe("after adding six nested [1, 2, 10] children", () => {
+    beforeEach(() => {
+      const child1 = stime.Task();
+      const child2 = stime.Task();
+      task.subtasks.push(child1);
+      task.subtasks.push(child2);
+
+      child1.subtasks.push(stime.Task(1, 2, 10));
+      child1.subtasks.push(stime.Task(1, 2, 10));
+      child2.subtasks.push(stime.Task(1, 2, 10));
+      child2.subtasks.push(stime.Task(1, 2, 10));
+      child2.subtasks.push(stime.Task(1, 2, 10));
+      child2.subtasks.push(stime.Task(1, 2, 10));
+    });
+
+    it("has a best-case estimate of 8", () => {
+      expect(task.best).to.equal(8);
+    });
+
+    it("has a nominal estimate of 12", () => {
+      expect(task.nominal).to.equal(12);
+    });
+
+    it("has a worst-case estimate of 30", () => {
+      expect(task.worst).to.equal(30);
+    });
+  });
 });
