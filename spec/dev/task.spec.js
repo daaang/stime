@@ -62,6 +62,42 @@ describe("Task", () => {
   });
 });
 
+describe("Task('holler dollar')", () => {
+  beforeEach(() => {
+    task = stime.Task("holler dollar");
+  });
+
+  it("has a description of 'holler dollar'", () => {
+    expect(task.description).to.equal("holler dollar");
+  });
+
+  itHasEstimates(0, 0, 0);
+});
+
+describe("Task(2, 4, 8)", () => {
+  beforeEach(() => {
+    task = stime.Task(2, 4, 8);
+  });
+
+  it("has an empty string for a description", () => {
+    expect(task.description).to.equal("");
+  });
+
+  itHasEstimates(2, 4, 8);
+});
+
+describe("Task(5, 8, 13, 'fibonacci')", () => {
+  beforeEach(() => {
+    task = stime.Task(5, 8, 13, "fibonacci");
+  });
+
+  it("has a description of 'fibonacci'", () => {
+    expect(task.description).to.equal("fibonacci");
+  });
+
+  itHasEstimates(5, 8, 13);
+});
+
 describe("Task()", () => {
   beforeEach(() => {
     task = stime.Task();
@@ -121,6 +157,22 @@ describe("Task()", () => {
       });
 
       itHasEstimates(3, 4, 8);
+    });
+
+    describe("and then setting the worst-case to 7", () => {
+      beforeEach(() => {
+        task.worst = 7;
+      });
+
+      itHasEstimates(3, 5, 7);
+    });
+
+    describe("and then setting the best-case to 10", () => {
+      beforeEach(() => {
+        task.best = 10;
+      });
+
+      itHasEstimates(10, 10, 10);
     });
 
     describe("and then adding a 1,2,3 child", () => {
@@ -253,40 +305,4 @@ describe("Task()", () => {
       itHasEstimates(5, 11, 16);
     });
   });
-});
-
-describe("Task('holler dollar')", () => {
-  beforeEach(() => {
-    task = stime.Task("holler dollar");
-  });
-
-  it("has a description of 'holler dollar'", () => {
-    expect(task.description).to.equal("holler dollar");
-  });
-
-  itHasEstimates(0, 0, 0);
-});
-
-describe("Task(2, 4, 8)", () => {
-  beforeEach(() => {
-    task = stime.Task(2, 4, 8);
-  });
-
-  it("has an empty string for a description", () => {
-    expect(task.description).to.equal("");
-  });
-
-  itHasEstimates(2, 4, 8);
-});
-
-describe("Task(5, 8, 13, 'fibonacci')", () => {
-  beforeEach(() => {
-    task = stime.Task(5, 8, 13, "fibonacci");
-  });
-
-  it("has a description of 'fibonacci'", () => {
-    expect(task.description).to.equal("fibonacci");
-  });
-
-  itHasEstimates(5, 8, 13);
 });
