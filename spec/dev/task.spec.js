@@ -1,5 +1,5 @@
 // stime: Estimates and Tomatoes
-// Copyright 2017 Matt LaChance
+// Copyright 2017-2018 Matt LaChance
 //
 // This file is part of stime.
 //
