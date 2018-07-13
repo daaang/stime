@@ -104,6 +104,9 @@ describe("Task(5, 8, 13, 'fibonacci')", () => {
   });
 
   itHasEstimates(5, 8, 13);
+  itHasJSON({isComplete: false,
+             description: "fibonacci",
+             estimates: [5, 8, 13]});
 });
 
 describe("Task()", () => {
