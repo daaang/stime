@@ -46,6 +46,12 @@ const itHasEstimates = function(best, nominal, worst) {
   });
 };
 
+const itHasJSON = function(json) {
+  it("has a json representation of " + JSON.stringify(json), function() {
+    expect(JSON.parse(JSON.stringify(task))).to.deep.equal(json);
+  });
+};
+
 describe("Task", () => {
   it("errors when given two arguments", () => {
     expect(() => { stime.Task(1, 2); }).to.throw();
@@ -72,10 +78,7 @@ describe("Task('holler dollar')", () => {
   });
 
   itHasEstimates(0, 0, 0);
-
-  it("has a json representation of {description: 'holler dollar'}", () => {
-    expect(JSON.parse(JSON.stringify(task))).to.deep.equal({description: "holler dollar"});
-  });
+  itHasJSON({description: "holler dollar"});
 });
 
 describe("Task(2, 4, 8)", () => {
