@@ -451,3 +451,4 @@ describe("Task({})", () => {
 });
 
 testJSON({isComplete: true});
+testJSON({isComplete: true, description: "hello"});
