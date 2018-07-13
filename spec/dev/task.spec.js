@@ -91,6 +91,7 @@ describe("Task(2, 4, 8)", () => {
   });
 
   itHasEstimates(2, 4, 8);
+  itHasJSON({estimates: [2, 4, 8]});
 });
 
 describe("Task(5, 8, 13, 'fibonacci')", () => {
