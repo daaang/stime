@@ -445,3 +445,13 @@ describe("Task({})", () => {
     expect(task.description).to.equal("");
   });
 });
+
+describe("Task({isComplete: true})", () => {
+  beforeEach(() => {
+    task = stime.Task({isComplete: true});
+  });
+
+  it("is complete", () => {
+    expect(task.isComplete()).to.equal(true);
+  });
+});
