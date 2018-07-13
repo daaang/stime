@@ -431,3 +431,17 @@ describe("Task()", () => {
     });
   });
 });
+
+describe("Task({})", () => {
+  beforeEach(() => {
+    task = stime.Task({});
+  });
+
+  it("is incomplete", () => {
+    expect(task.isComplete()).to.equal(false);
+  });
+
+  it("has an empty description", () => {
+    expect(task.description).to.equal("");
+  });
+});
