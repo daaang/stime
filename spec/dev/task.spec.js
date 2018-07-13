@@ -167,6 +167,12 @@ describe("Task()", () => {
       });
 
       itHasEstimates(2, 5, 8);
+
+      itHasJSON({
+        isComplete: false,
+        estimates: [2, null, null],
+        subtasks: [{isComplete: false, estimates: [3, 5, 8]}]
+      });
     });
 
     describe("and then setting the nominal to 4", () => {
@@ -175,6 +181,12 @@ describe("Task()", () => {
       });
 
       itHasEstimates(3, 4, 8);
+
+      itHasJSON({
+        isComplete: false,
+        estimates: [null, 4, null],
+        subtasks: [{isComplete: false, estimates: [3, 5, 8]}]
+      });
     });
 
     describe("and then setting the worst-case to 7", () => {
@@ -183,6 +195,12 @@ describe("Task()", () => {
       });
 
       itHasEstimates(3, 5, 7);
+
+      itHasJSON({
+        isComplete: false,
+        estimates: [null, null, 7],
+        subtasks: [{isComplete: false, estimates: [3, 5, 8]}]
+      });
     });
 
     describe("and then setting the best-case to 10", () => {
