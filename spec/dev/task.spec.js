@@ -52,6 +52,16 @@ const itHasJSON = function(json) {
   });
 };
 
+const testJSON = function(json) {
+  describe("Task(" + JSON.stringify(json) + ")", function() {
+    beforeEach(function() {
+      task = stime.Task(json);
+    });
+
+    itHasJSON(json);
+  });
+};
+
 describe("Task", () => {
   it("errors when given two arguments", () => {
     expect(() => { stime.Task(1, 2); }).to.throw();
@@ -440,10 +450,4 @@ describe("Task({})", () => {
   itHasJSON({isComplete: false});
 });
 
-describe("Task({isComplete: true})", () => {
-  beforeEach(() => {
-    task = stime.Task({isComplete: true});
-  });
-
-  itHasJSON({isComplete: true});
-});
+testJSON({isComplete: true});
