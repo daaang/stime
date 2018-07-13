@@ -437,13 +437,7 @@ describe("Task({})", () => {
     task = stime.Task({});
   });
 
-  it("is incomplete", () => {
-    expect(task.isComplete()).to.equal(false);
-  });
-
-  it("has an empty description", () => {
-    expect(task.description).to.equal("");
-  });
+  itHasJSON({isComplete: false});
 });
 
 describe("Task({isComplete: true})", () => {
@@ -451,7 +445,5 @@ describe("Task({isComplete: true})", () => {
     task = stime.Task({isComplete: true});
   });
 
-  it("is complete", () => {
-    expect(task.isComplete()).to.equal(true);
-  });
+  itHasJSON({isComplete: true});
 });
