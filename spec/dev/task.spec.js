@@ -72,6 +72,10 @@ describe("Task('holler dollar')", () => {
   });
 
   itHasEstimates(0, 0, 0);
+
+  it("has a json representation of {description: 'holler dollar'}", () => {
+    expect(JSON.parse(JSON.stringify(task))).to.deep.equal({description: "holler dollar"});
+  });
 });
 
 describe("Task(2, 4, 8)", () => {
