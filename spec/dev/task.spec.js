@@ -450,6 +450,14 @@ describe("Task({})", () => {
   itHasJSON({isComplete: false});
 });
 
+describe("Task(Task({}))", () => {
+  beforeEach(() => {
+    task = stime.Task(stime.Task({}));
+  });
+
+  itHasJSON({isComplete: false});
+});
+
 testJSON({isComplete: true});
 testJSON({isComplete: false, description: "hello"});
 testJSON({isComplete: false, estimates: [3, 9, 27]});
