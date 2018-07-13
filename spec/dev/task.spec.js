@@ -451,5 +451,14 @@ describe("Task({})", () => {
 });
 
 testJSON({isComplete: true});
-testJSON({isComplete: true, description: "hello"});
-testJSON({isComplete: true, estimates: [3, 9, 27]});
+testJSON({isComplete: false, description: "hello"});
+testJSON({isComplete: false, estimates: [3, 9, 27]});
+
+testJSON({
+  isComplete: false,
+  description: "root task",
+  subtasks: [
+    {isComplete: false, description: "first subtask"},
+    {isComplete: false, description: "second subtask"}
+  ]
+});
