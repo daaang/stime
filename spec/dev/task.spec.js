@@ -123,6 +123,7 @@ describe("Task()", () => {
   });
 
   itHasEstimates(0, 0, 0);
+  itHasJSON({isComplete: false});
 
   it("has an empty list of subtasks", () => {
     expect(task.subtasks).to.deep.equal([]);
@@ -145,6 +146,8 @@ describe("Task()", () => {
       task.incomplete();
       expect(task.isComplete()).to.equal(false);
     });
+
+    itHasJSON({isComplete: true});
   });
 
   describe("after adding a 3,5,8 child", () => {
@@ -153,6 +156,10 @@ describe("Task()", () => {
     });
 
     itHasEstimates(3, 5, 8);
+    itHasJSON({
+      isComplete: false,
+      subtasks: [{isComplete: false, estimates: [3, 5, 8]}]
+    });
 
     describe("and then setting the best-case to 2", () => {
       beforeEach(() => {
