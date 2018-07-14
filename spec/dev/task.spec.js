@@ -485,3 +485,18 @@ testJSON({
     {isComplete: false, description: "second subtask"}
   ]
 });
+
+describe("Task({intervals: [{description: 'matt'}]})", () => {
+  beforeEach(() => {
+    task = stime.Task({intervals: [{description: "matt"}]});
+  });
+
+  it("stores a full interval object", () => {
+    const interval = task.intervals[0];
+
+    expect(interval.description).to.equal("matt");
+    expect(interval.restTimeLength).to.be.above(0);
+    expect(interval.workTimeLength).to.be.above(0);
+    expect(interval.startTime).to.be.above(0);
+  });
+});
