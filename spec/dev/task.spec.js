@@ -440,6 +440,21 @@ describe("Task()", () => {
       expect(task.worst).to.equal(30);
     });
   });
+
+  describe("when given Interval('hey')", () => {
+    beforeEach(() => {
+      task.intervals.push(stime.Interval("hey"));
+    });
+
+    it("has a json representation with an interval json object", () => {
+      const interval = JSON.parse(JSON.stringify(task)).intervals[0];
+
+      expect(interval.description).to.equal("hey");
+      expect(interval.restTimeLength).to.be.above(0);
+      expect(interval.workTimeLength).to.be.above(0);
+      expect(interval.startTime).to.be.above(0);
+    });
+  });
 });
 
 describe("Task({})", () => {
