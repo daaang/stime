@@ -14,8 +14,8 @@ The Goal
 
 Eventually, I'd like this to be able to do four things:
 
-1.  Store three-number task estimates in terms of tomatoes.
-2.  Store tomatoes, knowing which tasks they were for.
+1.  (done) Store three-number task estimates in terms of tomatoes.
+2.  (done) Store tomatoes, knowing which tasks they were for.
 3.  Report stats on recent estimate accuracy.
 4.  Translate tomato estimates into realtime estimates based on recent
     frequency and on how much of my dev time I'm willing to spend on
