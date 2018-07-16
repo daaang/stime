@@ -143,6 +143,10 @@ describe("Task()", () => {
     expect(task.intervals).to.deep.equal([]);
   });
 
+  it("has an empty list of tags", () => {
+    expect(task.tags).to.deep.equal([]);
+  });
+
   describe("after marking as complete", () => {
     beforeEach(() => {
       task.complete();
