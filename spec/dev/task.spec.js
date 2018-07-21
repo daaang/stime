@@ -147,6 +147,10 @@ describe("Task()", () => {
     expect(task.tags).to.deep.equal([]);
   });
 
+  it("has an empty mapping of categories", () => {
+    expect(task.categories).to.deep.equal(new Map());
+  });
+
   describe("after marking as complete", () => {
     beforeEach(() => {
       task.complete();
