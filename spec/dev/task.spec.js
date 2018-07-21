@@ -480,6 +480,7 @@ describe("Task(Task({}))", () => {
 testJSON({isComplete: true});
 testJSON({isComplete: false, description: "hello"});
 testJSON({isComplete: false, estimates: [3, 9, 27]});
+testJSON({isComplete: false, tags: ["a", "b"]});
 
 testJSON({
   isComplete: false,
