@@ -1,5 +1,5 @@
 // stime: Estimates and Tomatoes
-// Copyright 2017-2018 Matt LaChance
+// Copyright 2018 Matt LaChance
 //
 // This file is part of stime.
 //
@@ -16,8 +16,18 @@
 // You should have received a copy of the GNU General Public License
 // along with stime. If not, see <http://www.gnu.org/licenses/>.
 
-module.exports = {
-  "Interval": require("./lib/interval"),
-  "List": require("./lib/list"),
-  "Task": require("./lib/task")
-};
+/* eslint-env mocha */
+const expect = require("chai").expect;
+const stime = require("../..");
+
+let list;
+
+describe("List()", () => {
+  beforeEach(() => {
+    list = stime.List();
+  });
+
+  it("is defined", () => {
+    expect(list).not.to.equal(undefined);
+  });
+});
