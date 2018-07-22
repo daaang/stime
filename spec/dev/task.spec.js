@@ -87,6 +87,10 @@ describe("Task('holler dollar')", () => {
     expect(task.description).to.equal("holler dollar");
   });
 
+  it("has no firstSubtask", () => {
+    expect(task.firstSubtask()).to.equal("");
+  });
+
   itHasEstimates(0, 0, 0);
   itHasJSON({isComplete: false, description: "holler dollar"});
 });
