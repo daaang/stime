@@ -87,8 +87,8 @@ describe("Task('holler dollar')", () => {
     expect(task.description).to.equal("holler dollar");
   });
 
-  it("has no firstSubtask", () => {
-    expect(task.firstSubtask()).to.equal("");
+  it("is its own firstSubtask", () => {
+    expect(task.firstSubtask()).to.equal("holler dollar");
   });
 
   itHasEstimates(0, 0, 0);
