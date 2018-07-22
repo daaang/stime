@@ -102,6 +102,16 @@ describe("Task('holler dollar')", () => {
     it("has a firstSubtask of 'a'", () => {
       expect(task.firstSubtask()).to.equal("a");
     });
+
+    describe("when given a subsubtask of 'b' under 'a'", () => {
+      beforeEach(() => {
+        task.subtasks[0].subtasks.push(stime.Task("b"));
+      });
+
+      it("has a firstSubtask of 'b'", () => {
+        expect(task.firstSubtask()).to.equal("b");
+      });
+    });
   });
 });
 
