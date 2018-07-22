@@ -93,6 +93,16 @@ describe("Task('holler dollar')", () => {
 
   itHasEstimates(0, 0, 0);
   itHasJSON({isComplete: false, description: "holler dollar"});
+
+  describe("when given a subtask named 'a'", () => {
+    beforeEach(() => {
+      task.subtasks.push(stime.Task("a"));
+    });
+
+    it("has a firstSubtask of 'a'", () => {
+      expect(task.firstSubtask()).to.equal("a");
+    });
+  });
 });
 
 describe("Task(2, 4, 8)", () => {
