@@ -30,4 +30,9 @@ describe("List()", () => {
   it("is defined", () => {
     expect(list).not.to.equal(undefined);
   });
+
+  it("has json output of {tasks: {}, order: []}", () => {
+    expect(JSON.parse(JSON.stringify(list))).to.deep.equal(
+      {tasks: {}, order: []});
+  });
 });
