@@ -51,6 +51,6 @@ describe("List({tasks: {'1': {}}, order: [1]})", () => {
 
   it("has json output of {tasks: {'1': {}}, order: [1]}", () => {
     expect(JSON.parse(JSON.stringify(list))).to.deep.equal(
-      {tasks: {"1": {}}, order: [1]});
+      {tasks: {"1": {isComplete: false}}, order: [1]});
   });
 });
