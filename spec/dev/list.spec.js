@@ -22,26 +22,18 @@ const stime = require("../..");
 
 let list;
 
-describe("List()", () => {
-  beforeEach(() => {
-    list = stime.List();
+const itHasJSON = function(json) {
+  it("has json output of " + JSON.stringify(json), function() {
+    expect(JSON.parse(JSON.stringify(list))).to.deep.equal(json);
   });
-
-  it("has json output of {tasks: {}, order: []}", () => {
-    expect(JSON.parse(JSON.stringify(list))).to.deep.equal(
-      {tasks: {}, order: []});
-  });
-});
+};
 
 describe("List({})", () => {
   beforeEach(() => {
     list = stime.List({});
   });
 
-  it("has json output of {tasks: {}, order: []}", () => {
-    expect(JSON.parse(JSON.stringify(list))).to.deep.equal(
-      {tasks: {}, order: []});
-  });
+  itHasJSON({tasks: {}, order: []});
 });
 
 describe("List({tasks: {'1': {}}, order: [1]})", () => {
@@ -49,8 +41,13 @@ describe("List({tasks: {'1': {}}, order: [1]})", () => {
     list = stime.List({tasks: {"1": {}}, order: [1]});
   });
 
-  it("has json output of {tasks: {'1': {}}, order: [1]}", () => {
-    expect(JSON.parse(JSON.stringify(list))).to.deep.equal(
-      {tasks: {"1": {isComplete: false}}, order: [1]});
+  itHasJSON({tasks: {"1": {isComplete: false}}, order: [1]});
+});
+
+describe("List()", () => {
+  beforeEach(() => {
+    list = stime.List();
   });
+
+  itHasJSON({tasks: {}, order: []});
 });
