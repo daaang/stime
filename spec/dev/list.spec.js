@@ -27,12 +27,19 @@ describe("List()", () => {
     list = stime.List();
   });
 
-  it("is defined", () => {
-    expect(list).not.to.equal(undefined);
-  });
-
   it("has json output of {tasks: {}, order: []}", () => {
     expect(JSON.parse(JSON.stringify(list))).to.deep.equal(
       {tasks: {}, order: []});
+  });
+});
+
+describe("List({tasks: {'1': {}}, order: [1]})", () => {
+  beforeEach(() => {
+    list = stime.List({tasks: {"1": {}}, order: [1]});
+  });
+
+  it("has json output of {tasks: {'1': {}}, order: [1]}", () => {
+    expect(JSON.parse(JSON.stringify(list))).to.deep.equal(
+      {tasks: {"1": {}}, order: [1]});
   });
 });
