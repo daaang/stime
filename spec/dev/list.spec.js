@@ -63,6 +63,10 @@ describe("List()", () => {
       list.addTask(1, 2, 3, "first");
     });
 
+    it("has a new uuid", () => {
+      expect(list.uuid()).not.to.equal(startingUUID);
+    });
+
     itHasJSON({order: [0],
                tasks: {"0": {isComplete: false,
                              estimates: [1, 2, 3],
