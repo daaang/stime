@@ -23,9 +23,11 @@ const stime = require("../..");
 let list;
 
 const itHasJSON = function(json) {
-  it("has json output of " + JSON.stringify(json), function() {
-    expect(JSON.parse(JSON.stringify(list))).to.deep.equal(json);
-  });
+  for (const key in json)
+    if (json.hasOwnProperty(key))
+      it("has json output including {" + key + ": " + json[key] + "}", function() {
+        expect(JSON.parse(JSON.stringify(list))[key]).to.deep.equal(json[key]);
+      });
 };
 
 describe("List({})", () => {
