@@ -25,24 +25,26 @@ let list;
 const itHasJSON = function(json) {
   for (const key in json)
     if (json.hasOwnProperty(key))
-      it("has json output including {" + key + ": " + json[key] + "}", function() {
+      it("has json output including {" + key + ": " + JSON.stringify(json[key]) + "}", function() {
         expect(JSON.parse(JSON.stringify(list))[key]).to.deep.equal(json[key]);
       });
 };
 
-describe("List({})", () => {
-  beforeEach(() => {
-    list = stime.List({});
-  });
+const describeList = function(json, tests) {
+  describe("List(" + JSON.stringify(json) + ")", function() {
+    beforeEach(function() {
+      list = stime.List(json);
+    });
 
+    tests();
+  });
+};
+
+describeList({}, () => {
   itHasJSON({tasks: {}, order: []});
 });
 
-describe("List({tasks: {'1': {}}, order: [1]})", () => {
-  beforeEach(() => {
-    list = stime.List({tasks: {"1": {}}, order: [1]});
-  });
-
+describeList({tasks: {"1": {}}, order: [1]}, () => {
   itHasJSON({tasks: {"1": {isComplete: false}}, order: [1]});
 });
 
