@@ -33,6 +33,17 @@ describe("List()", () => {
   });
 });
 
+describe("List({})", () => {
+  beforeEach(() => {
+    list = stime.List({});
+  });
+
+  it("has json output of {tasks: {}, order: []}", () => {
+    expect(JSON.parse(JSON.stringify(list))).to.deep.equal(
+      {tasks: {}, order: []});
+  });
+});
+
 describe("List({tasks: {'1': {}}, order: [1]})", () => {
   beforeEach(() => {
     list = stime.List({tasks: {"1": {}}, order: [1]});
