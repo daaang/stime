@@ -45,8 +45,15 @@ describe("List({tasks: {'1': {}}, order: [1]})", () => {
 });
 
 describe("List()", () => {
+  let startingUUID;
+
   beforeEach(() => {
     list = stime.List();
+    startingUUID = list.uuid();
+  });
+
+  it("has a uuid", () => {
+    expect(list.uuid()).to.equal(startingUUID);
   });
 
   itHasJSON({tasks: {}, order: []});
