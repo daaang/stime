@@ -50,4 +50,15 @@ describe("List()", () => {
   });
 
   itHasJSON({tasks: {}, order: []});
+
+  describe("after running list.addTask(1, 2, 3, 'first')", () => {
+    beforeEach(() => {
+      list.addTask(1, 2, 3, "first");
+    });
+
+    itHasJSON({order: [0],
+               tasks: {"0": {isComplete: false,
+                             estimates: [1, 2, 3],
+                             description: "first"}}});
+  });
 });
