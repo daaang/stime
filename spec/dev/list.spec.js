@@ -67,12 +67,16 @@ describe("List()", () => {
   });
 
   it("sends an empty report to its server", () => {
-    expect(list.syncWithServer()).to.deep.equal([startingUUID, null, []]);
+    expect(list.syncWithServer()).to.deep.equal(
+      [startingUUID, startingUUID, []]);
   });
 
   describe("after running list.addTask(1, 2, 3, 'first')", () => {
+    let secondUUID;
+
     beforeEach(() => {
       list.addTask(1, 2, 3, "first");
+      secondUUID = list.uuid();
     });
 
     it("has a new uuid", () => {
@@ -85,7 +89,8 @@ describe("List()", () => {
                              description: "first"}}});
 
     it("reports the new task to the server", () => {
-      expect(list.syncWithServer()[0]).to.equal(startingUUID);
+      expect(list.syncWithServer()).to.deep.equal(
+        [startingUUID, secondUUID, []]);
     });
   });
 });
