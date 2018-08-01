@@ -97,6 +97,14 @@ describe("List()", () => {
         ]]);
     });
 
+    describe("after running list.undo()", () => {
+      beforeEach(() => {
+        list.undo();
+      });
+
+      itHasJSON({order: [], tasks: {}});
+    });
+
     describe("after a successful sync with the server", () => {
       beforeEach(() => {
         list.applyServerResponse([secondUUID, secondUUID, []]);
