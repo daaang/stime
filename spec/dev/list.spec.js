@@ -60,11 +60,15 @@ describe("List()", () => {
     startingUUID = list.uuid();
   });
 
+  itHasJSON({tasks: {}, order: []});
+
   it("has a uuid", () => {
     expect(list.uuid()).to.equal(startingUUID);
   });
 
-  itHasJSON({tasks: {}, order: []});
+  it("sends an empty report to its server", () => {
+    expect(list.syncWithServer()).to.deep.equal([startingUUID, null, []]);
+  });
 
   describe("after running list.addTask(1, 2, 3, 'first')", () => {
     beforeEach(() => {
