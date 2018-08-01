@@ -107,6 +107,11 @@ describe("List()", () => {
       it("has a reverted uuid", () => {
         expect(list.uuid()).to.equal(startingUUID);
       });
+
+      it("sends an empty report to its server", () => {
+        expect(list.syncWithServer()).to.deep.equal(
+          [startingUUID, startingUUID, []]);
+      });
     });
 
     describe("after a successful sync with the server", () => {
