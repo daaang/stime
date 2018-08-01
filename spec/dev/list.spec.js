@@ -48,6 +48,10 @@ describeList({tasks: {"1": {}}, order: [1]}, () => {
   itHasJSON({tasks: {"1": {isComplete: false}}, order: [1]});
 });
 
+describeList({uuid: "fake uuid"}, () => {
+  itHasJSON({uuid: "fake uuid"});
+});
+
 describe("List()", () => {
   let startingUUID;
 
