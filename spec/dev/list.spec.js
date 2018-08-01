@@ -96,5 +96,16 @@ describe("List()", () => {
                           description: "first"}]
         ]]);
     });
+
+    describe("after a successful sync with the server", () => {
+      beforeEach(() => {
+        list.applyServerResponse([secondUUID, secondUUID, []]);
+      });
+
+      it("empties its list of changes", () => {
+        expect(list.syncWithServer()).to.deep.equal(
+          [secondUUID, secondUUID, []]);
+      });
+    });
   });
 });
