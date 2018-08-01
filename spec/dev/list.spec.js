@@ -103,6 +103,10 @@ describe("List()", () => {
       });
 
       itHasJSON({order: [], tasks: {}});
+
+      it("has a reverted uuid", () => {
+        expect(list.uuid()).to.equal(startingUUID);
+      });
     });
 
     describe("after a successful sync with the server", () => {
