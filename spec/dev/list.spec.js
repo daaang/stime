@@ -171,6 +171,19 @@ describe("List()", () => {
               ["addTask", 0, [1, 2, 3, "first"]]
             ]]);
         });
+
+        describe("after running list.redo()", () => {
+          beforeEach(() => {
+            list.redo();
+          });
+
+          itHasJSON({order: [0, 1],
+                     tasks: {"0": {isComplete: false,
+                                   estimates: [1, 2, 3],
+                                   description: "first"},
+                             "1": {isComplete: false,
+                                   description: "second"}}});
+        });
       });
     });
   });
