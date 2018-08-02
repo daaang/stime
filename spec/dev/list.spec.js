@@ -124,5 +124,37 @@ describe("List()", () => {
           [secondUUID, secondUUID, []]);
       });
     });
+
+    describe("after running list.addTask('second')", () => {
+      let thirdUUID;
+
+      beforeEach(() => {
+        list.addTask("second");
+        thirdUUID = list.uuid();
+      });
+
+      itHasJSON({order: [0, 1],
+                 tasks: {"0": {isComplete: false,
+                               estimates: [1, 2, 3],
+                               description: "first"},
+                         "1": {isComplete: false,
+                               description: "second"}}});
+
+      it("has a new uuid", () => {
+        expect(list.uuid()).not.to.equal(startingUUID);
+        expect(list.uuid()).not.to.equal(secondUUID);
+      });
+
+      it("reports both new tasks to the server", () => {
+        expect(list.syncWithServer()).to.deep.equal(
+          [startingUUID, thirdUUID, [
+            ["addTask", 0, {isComplete: false,
+                            estimates: [1, 2, 3],
+                            description: "first"}],
+            ["addTask", 1, {isComplete: false,
+                            description: "second"}]
+          ]]);
+      });
+    });
   });
 });
