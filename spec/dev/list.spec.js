@@ -151,7 +151,7 @@ describe("List()", () => {
           ]]);
       });
 
-      xdescribe("after running list.undo()", () => {
+      describe("after running list.undo()", () => {
         beforeEach(() => {
           list.undo();
         });
