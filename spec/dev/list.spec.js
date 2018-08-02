@@ -164,6 +164,13 @@ describe("List()", () => {
         it("has its previous uuid", () => {
           expect(list.uuid()).to.equal(secondUUID);
         });
+
+        it("reports the older task to the server", () => {
+          expect(list.syncWithServer()).to.deep.equal(
+            [startingUUID, secondUUID, [
+              ["addTask", 0, [1, 2, 3, "first"]]
+            ]]);
+        });
       });
     });
   });
