@@ -160,6 +160,10 @@ describe("List()", () => {
                    tasks: {"0": {isComplete: false,
                                  estimates: [1, 2, 3],
                                  description: "first"}}});
+
+        it("has its previous uuid", () => {
+          expect(list.uuid()).to.equal(secondUUID);
+        });
       });
     });
   });
