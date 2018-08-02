@@ -91,9 +91,7 @@ describe("List()", () => {
     it("reports the new task to the server", () => {
       expect(list.syncWithServer()).to.deep.equal(
         [startingUUID, secondUUID, [
-          ["addTask", 0, {isComplete: false,
-                          estimates: [1, 2, 3],
-                          description: "first"}]
+          ["addTask", 0, [1, 2, 3, "first"]]
         ]]);
     });
 
@@ -148,11 +146,8 @@ describe("List()", () => {
       it("reports both new tasks to the server", () => {
         expect(list.syncWithServer()).to.deep.equal(
           [startingUUID, thirdUUID, [
-            ["addTask", 0, {isComplete: false,
-                            estimates: [1, 2, 3],
-                            description: "first"}],
-            ["addTask", 1, {isComplete: false,
-                            description: "second"}]
+            ["addTask", 0, [1, 2, 3, "first"]],
+            ["addTask", 1, ["second"]]
           ]]);
       });
 
