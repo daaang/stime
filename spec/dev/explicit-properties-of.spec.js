@@ -46,6 +46,14 @@ describe("an empty object", () => {
     });
 
     itHasKeys([]);
+
+    describe("when given {c: 3}", () => {
+      beforeEach(() => {
+        obj.c = 3;
+      });
+
+      itHasKeys(["c"]);
+    });
   });
 });
 
