@@ -20,23 +20,31 @@
 const expect = require("chai").expect;
 const explicitPropertiesOf = require("../../lib/explicit-properties-of");
 
-describe("explicitPropertiesOf({})", () => {
-  it("should iterate 0 times", () => {
-    const iteration = explicitPropertiesOf({}).next();
-    expect(iteration.value).to.equal(undefined);
-    expect(iteration.done).to.equal(true);
+const itHasKeys = function(keys) {
+  it("has keys " + JSON.stringify(keys), function() {
+    const actual = [];
+
+    for (const i of explicitPropertiesOf(obj))
+      actual.push(i);
+
+    expect(actual).to.have.members(keys);
   });
+};
+
+let obj;
+
+describe("an empty object", () => {
+  beforeEach(() => {
+    obj = {};
+  });
+
+  itHasKeys([]);
 });
 
-describe("explicitPropertiesOf({a: 1, b: 2})", () => {
-  it("should contain 'a' and 'b'", () => {
-    const keys = [];
-
-    for (const key of explicitPropertiesOf({a: 1, b: 2}))
-      keys.push(key);
-
-    expect(keys).to.have.length(2);
-    expect(keys).to.contain("a");
-    expect(keys).to.contain("b");
+describe("{a: 1, b: 2}", () => {
+  beforeEach(() => {
+    obj = {a: 1, b: 2};
   });
+
+  itHasKeys(["a", "b"]);
 });
