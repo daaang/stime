@@ -39,6 +39,14 @@ describe("an empty object", () => {
   });
 
   itHasKeys([]);
+
+  describe("when prototyped with {a: 1, b: 2}", () => {
+    beforeEach(() => {
+      Object.setPrototypeOf(obj, {a: 1, b: 2});
+    });
+
+    itHasKeys([]);
+  });
 });
 
 describe("{a: 1, b: 2}", () => {
