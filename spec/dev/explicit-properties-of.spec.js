@@ -27,3 +27,16 @@ describe("explicitPropertiesOf({})", () => {
     expect(iteration.done).to.equal(true);
   });
 });
+
+describe("explicitPropertiesOf({a: 1, b: 2})", () => {
+  it("should contain 'a' and 'b'", () => {
+    const keys = [];
+
+    for (const key of explicitPropertiesOf({a: 1, b: 2}))
+      keys.push(key);
+
+    expect(keys).to.have.length(2);
+    expect(keys).to.contain("a");
+    expect(keys).to.contain("b");
+  });
+});
