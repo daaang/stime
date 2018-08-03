@@ -19,15 +19,15 @@
 /* eslint-env mocha */
 const expect = require("chai").expect;
 const stime = require("../..");
+const explicitPropertiesOf = require("../../lib/explicit-properties-of");
 
 let list;
 
 const itHasJSON = function(json) {
-  for (const key in json)
-    if (json.hasOwnProperty(key))
-      it("has json output including {" + key + ": " + JSON.stringify(json[key]) + "}", function() {
-        expect(JSON.parse(JSON.stringify(list))[key]).to.deep.equal(json[key]);
-      });
+  for (const key in explicitPropertiesOf(json))
+    it("has json output including {" + key + ": " + JSON.stringify(json[key]) + "}", function() {
+      expect(JSON.parse(JSON.stringify(list))[key]).to.deep.equal(json[key]);
+    });
 };
 
 const describeList = function(json, tests) {
