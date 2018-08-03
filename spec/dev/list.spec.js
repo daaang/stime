@@ -172,6 +172,10 @@ describe("List()", () => {
             ]]);
         });
 
+        it("returns true when running redo()", () => {
+          expect(list.redo()).to.equal(true);
+        });
+
         describe("after running list.redo()", () => {
           beforeEach(() => {
             list.redo();
