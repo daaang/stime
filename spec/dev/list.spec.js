@@ -71,6 +71,10 @@ describe("List()", () => {
       [startingUUID, startingUUID, []]);
   });
 
+  it("returns false when running undo()", () => {
+    expect(list.undo()).to.equal(false);
+  });
+
   describe("after running list.addTask(1, 2, 3, 'first')", () => {
     let secondUUID;
 
