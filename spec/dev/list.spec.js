@@ -75,6 +75,10 @@ describe("List()", () => {
     expect(list.undo()).to.equal(false);
   });
 
+  it("returns false when running redo()", () => {
+    expect(list.redo()).to.equal(false);
+  });
+
   describe("after running list.addTask(1, 2, 3, 'first')", () => {
     let secondUUID;
 
