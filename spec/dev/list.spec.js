@@ -95,6 +95,10 @@ describe("List()", () => {
         ]]);
     });
 
+    it("returns true when running undo()", () => {
+      expect(list.undo()).to.equal(true);
+    });
+
     describe("after running list.undo()", () => {
       beforeEach(() => {
         list.undo();
