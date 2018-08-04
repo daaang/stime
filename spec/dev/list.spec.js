@@ -40,6 +40,30 @@ const describeList = function(json, tests) {
   });
 };
 
+const itCanBeUndone = function() {
+  it("returns true when running undo", () => {
+    expect(list.undo()).to.equal(true);
+  });
+};
+
+const itCannotBeUndone = function() {
+  it("returns false when running undo", () => {
+    expect(list.undo()).to.equal(false);
+  });
+};
+
+const itCanBeRedone = function() {
+  it("returns true when running redo", () => {
+    expect(list.redo()).to.equal(true);
+  });
+};
+
+const itCannotBeRedone = function() {
+  it("returns false when running redo", () => {
+    expect(list.redo()).to.equal(false);
+  });
+};
+
 describeList({}, () => {
   itHasJSON({tasks: {}, order: []});
 });
@@ -60,6 +84,9 @@ describe("List()", () => {
     startingUUID = list.uuid();
   });
 
+  itCannotBeUndone();
+  itCannotBeRedone();
+
   itHasJSON({tasks: {}, order: []});
 
   it("has a uuid", () => {
@@ -71,14 +98,6 @@ describe("List()", () => {
       [startingUUID, startingUUID, []]);
   });
 
-  it("returns false when running undo()", () => {
-    expect(list.undo()).to.equal(false);
-  });
-
-  it("returns false when running redo()", () => {
-    expect(list.redo()).to.equal(false);
-  });
-
   describe("after running list.addTask(1, 2, 3, 'first')", () => {
     let secondUUID;
 
@@ -86,6 +105,9 @@ describe("List()", () => {
       list.addTask(1, 2, 3, "first");
       secondUUID = list.uuid();
     });
+
+    itCanBeUndone();
+    itCannotBeRedone();
 
     it("has a new uuid", () => {
       expect(list.uuid()).not.to.equal(startingUUID);
@@ -103,14 +125,13 @@ describe("List()", () => {
         ]]);
     });
 
-    it("returns true when running undo()", () => {
-      expect(list.undo()).to.equal(true);
-    });
-
     describe("after running list.undo()", () => {
       beforeEach(() => {
         list.undo();
       });
+
+      itCannotBeUndone();
+      itCanBeRedone();
 
       itHasJSON({order: [], tasks: {}});
 
@@ -143,6 +164,9 @@ describe("List()", () => {
         thirdUUID = list.uuid();
       });
 
+      itCanBeUndone();
+      itCannotBeRedone();
+
       itHasJSON({order: [0, 1],
                  tasks: {"0": {isComplete: false,
                                estimates: [1, 2, 3],
@@ -168,6 +192,9 @@ describe("List()", () => {
           list.undo();
         });
 
+        itCanBeUndone();
+        itCanBeRedone();
+
         itHasJSON({order: [0],
                    tasks: {"0": {isComplete: false,
                                  estimates: [1, 2, 3],
@@ -184,14 +211,13 @@ describe("List()", () => {
             ]]);
         });
 
-        it("returns true when running redo()", () => {
-          expect(list.redo()).to.equal(true);
-        });
-
         describe("after running list.redo()", () => {
           beforeEach(() => {
             list.redo();
           });
+
+          itCanBeUndone();
+          itCannotBeRedone();
 
           itHasJSON({order: [0, 1],
                      tasks: {"0": {isComplete: false,
