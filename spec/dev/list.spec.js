@@ -154,6 +154,8 @@ describe("List()", () => {
         expect(list.syncWithServer()).to.deep.equal(
           [secondUUID, secondUUID, []]);
       });
+
+      itCanBeUndone();
     });
 
     describe("after running list.addTask('second')", () => {
