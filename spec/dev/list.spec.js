@@ -229,6 +229,19 @@ describe("List()", () => {
                                    description: "second"}}});
         });
       });
+
+      describe("after the server picks up only the first task", () => {
+        beforeEach(() => {
+          list.applyServerResponse([secondUUID, secondUUID, []]);
+        });
+
+        it("only empties relevant changes", () => {
+          expect(list.syncWithServer()).to.deep.equal(
+            [secondUUID, thirdUUID, [
+              ["addTask", 1, ["second"]]
+            ]]);
+        });
+      });
     });
   });
 });
