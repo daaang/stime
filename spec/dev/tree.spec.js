@@ -30,4 +30,8 @@ describe("Tree(0, null)", () => {
   it("has an id of 0", () => {
     expect(tree.id).to.equal(0);
   });
+
+  it("has a value of null", () => {
+    expect(tree.value).to.equal(null);
+  });
 });
