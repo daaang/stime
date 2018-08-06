@@ -35,3 +35,17 @@ describe("Tree(0, null)", () => {
     expect(tree.value).to.equal(null);
   });
 });
+
+describe("Tree(1, 'root')", () => {
+  beforeEach(() => {
+    tree = Tree(1, "root");
+  });
+
+  it("has an id of 1", () => {
+    expect(tree.id).to.equal(1);
+  });
+
+  it("has a value of 'root'", () => {
+    expect(tree.value).to.equal("root");
+  });
+});
