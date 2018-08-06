@@ -170,6 +170,13 @@ describe("List()", () => {
         it("has a reverted uuid", () => {
           expect(list.uuid()).to.equal(startingUUID);
         });
+
+        it("reports the reversion to the server", () => {
+          expect(list.syncWithServer()).to.deep.equal(
+            [secondUUID, startingUUID, [
+              ["removeTask", 0]
+            ]]);
+        });
       });
     });
 
