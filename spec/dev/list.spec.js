@@ -156,6 +156,21 @@ describe("List()", () => {
       });
 
       itCanBeUndone();
+
+      describe("after running list.undo()", () => {
+        beforeEach(() => {
+          list.undo();
+        });
+
+        itCannotBeUndone();
+        itCanBeRedone();
+
+        itHasJSON({order: [], tasks: {}});
+
+        it("has a reverted uuid", () => {
+          expect(list.uuid()).to.equal(startingUUID);
+        });
+      });
     });
 
     describe("after running list.addTask('second')", () => {
