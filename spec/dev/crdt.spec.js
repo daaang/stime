@@ -30,6 +30,10 @@ describe("CRDT(0)", () => {
   it("has a lastValue of 0", () => {
     expect(crdt.lastValue()).to.equal(0);
   });
+
+  it("cannot be undone", () => {
+    expect(crdt.isUndoable()).to.equal(false);
+  });
 });
 
 describe("CRDT('a')", () => {
