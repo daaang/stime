@@ -44,4 +44,18 @@ describe("CRDT('a')", () => {
   it("has a lastValue of 'a'", () => {
     expect(crdt.lastValue()).to.equal("a");
   });
+
+  it("cannot be undone", () => {
+    expect(crdt.isUndoable()).to.equal(false);
+  });
+
+  describe("after running crdt.update('b')", () => {
+    beforeEach(() => {
+      crdt.update("b");
+    });
+
+    it("has a lastValue of 'b'", () => {
+      expect(crdt.lastValue()).to.equal("b");
+    });
+  });
 });
