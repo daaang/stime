@@ -31,3 +31,13 @@ describe("CRDT(0)", () => {
     expect(crdt.lastValue()).to.equal(0);
   });
 });
+
+describe("CRDT('a')", () => {
+  beforeEach(() => {
+    crdt = CRDT("a");
+  });
+
+  it("has a lastValue of 'a'", () => {
+    expect(crdt.lastValue()).to.equal("a");
+  });
+});
