@@ -64,6 +64,10 @@ describe("CRDT('uuidA', 'a')", () => {
     expect(crdt.siteUUID()).not.to.equal(CRDT("", "").siteUUID());
   });
 
+  it("returns two empty arrays when given 'uuidA' twice", () => {
+    expect(crdt.changes("uuidA", "uuidA")).to.deep.equal([[], []]);
+  });
+
   describe("after running crdt.update('b')", () => {
     beforeEach(() => {
       crdt.update("b");
