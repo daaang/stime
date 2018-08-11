@@ -119,6 +119,16 @@ describe("CRDT('uuidA', 'a')", () => {
       it("has a lastValue of 'c'", () => {
         expect(crdt.lastValue()).to.equal("c");
       });
+
+      describe("after running crdt.undo()", () => {
+        beforeEach(() => {
+          crdt.undo();
+        });
+
+        it("has a lastValue of 'b'", () => {
+          expect(crdt.lastValue()).to.equal("b");
+        });
+      });
     });
   });
 });
