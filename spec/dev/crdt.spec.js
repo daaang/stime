@@ -93,6 +93,10 @@ describe("CRDT('uuidA', 'a')", () => {
       it("has a lastValue of 'a'", () => {
         expect(crdt.lastValue()).to.equal("a");
       });
+
+      it("cannot be undone", () => {
+        expect(crdt.isUndoable()).to.equal(false);
+      });
     });
   });
 });
