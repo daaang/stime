@@ -64,13 +64,16 @@ describe("CRDT('uuidA', 'a')", () => {
     expect(crdt.siteUUID()).not.to.equal(CRDT("", "").siteUUID());
   });
 
-  it("returns two empty arrays when given 'uuidA' twice", () => {
-    expect(crdt.changes("uuidA", "uuidA")).to.deep.equal([[], []]);
+  it("returns two empty arrays when given 'uuidA'", () => {
+    expect(crdt.changes("uuidA")).to.deep.equal([[], []]);
   });
 
   describe("after running crdt.update('b')", () => {
+    let uuidB;
+
     beforeEach(() => {
       crdt.update("b");
+      uuidB = crdt.uuid();
     });
 
     it("has a lastValue of 'b'", () => {
@@ -83,10 +86,15 @@ describe("CRDT('uuidA', 'a')", () => {
 
     it("has a new uuid", () => {
       expect(crdt.uuid()).not.to.equal("uuidA");
+      expect(crdt.uuid()).to.equal(uuidB);
     });
 
     it("doesn't change its site uuid", () => {
       expect(crdt.siteUUID()).to.equal(siteUUID);
+    });
+
+    it("yields [[], ['b']] when given uuidA", () => {
+      expect(crdt.changes("uuidA")).to.deep.equal([[], ["b"]]);
     });
 
     describe("after running crdt.undo()", () => {
