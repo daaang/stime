@@ -22,9 +22,9 @@ const CRDT = require("../../lib/crdt");
 
 let crdt;
 
-describe("CRDT(0)", () => {
+describe("CRDT('abcd', 0)", () => {
   beforeEach(() => {
-    crdt = CRDT(0);
+    crdt = CRDT("abcd", 0);
   });
 
   it("has a lastValue of 0", () => {
@@ -36,12 +36,9 @@ describe("CRDT(0)", () => {
   });
 });
 
-describe("CRDT('a')", () => {
-  let uuidA;
-
+describe("CRDT('uuidA', 'a')", () => {
   beforeEach(() => {
-    crdt = CRDT("a");
-    uuidA = crdt.uuid();
+    crdt = CRDT("uuidA", "a");
   });
 
   it("has a lastValue of 'a'", () => {
@@ -50,6 +47,10 @@ describe("CRDT('a')", () => {
 
   it("cannot be undone", () => {
     expect(crdt.isUndoable()).to.equal(false);
+  });
+
+  it("returns the same uuid every time", () => {
+    expect(crdt.uuid()).to.equal("uuidA");
   });
 
   describe("after running crdt.update('b')", () => {
@@ -66,7 +67,7 @@ describe("CRDT('a')", () => {
     });
 
     it("has a new uuid", () => {
-      expect(crdt.uuid()).not.to.equal(uuidA);
+      expect(crdt.uuid()).not.to.equal("uuidA");
     });
   });
 });
