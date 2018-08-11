@@ -177,23 +177,6 @@ describe("List()", () => {
               ["removeTask", 0]
             ]]);
         });
-
-        xdescribe("after running list.addTask('third')", () => {
-          let fourthUUID;
-
-          beforeEach(() => {
-            list.addTask("third");
-            fourthUUID = list.uuid();
-          });
-
-          it("reports the reversion and the new task to the server", () => {
-            expect(list.syncWithServer()).to.deep.equal(
-              [secondUUID, fourthUUID, [
-                ["removeTask", 0],
-                ["addTask", 0, ["third"]]
-              ]]);
-          });
-        });
       });
     });
 
