@@ -37,8 +37,11 @@ describe("CRDT(0)", () => {
 });
 
 describe("CRDT('a')", () => {
+  let uuidA;
+
   beforeEach(() => {
     crdt = CRDT("a");
+    uuidA = crdt.uuid();
   });
 
   it("has a lastValue of 'a'", () => {
@@ -60,6 +63,10 @@ describe("CRDT('a')", () => {
 
     it("can be undone", () => {
       expect(crdt.isUndoable()).to.equal(true);
+    });
+
+    it("has a new uuid", () => {
+      expect(crdt.uuid()).not.to.equal(uuidA);
     });
   });
 });
