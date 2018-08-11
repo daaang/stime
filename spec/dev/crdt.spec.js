@@ -37,8 +37,11 @@ describe("CRDT('abcd', 0)", () => {
 });
 
 describe("CRDT('uuidA', 'a')", () => {
+  let siteUUID;
+
   beforeEach(() => {
     crdt = CRDT("uuidA", "a");
+    siteUUID = crdt.siteUUID();
   });
 
   it("has a lastValue of 'a'", () => {
@@ -51,6 +54,10 @@ describe("CRDT('uuidA', 'a')", () => {
 
   it("returns the same uuid every time", () => {
     expect(crdt.uuid()).to.equal("uuidA");
+  });
+
+  it("returns the same site uuid every time", () => {
+    expect(crdt.siteUUID()).to.equal(siteUUID);
   });
 
   describe("after running crdt.update('b')", () => {
@@ -68,6 +75,10 @@ describe("CRDT('uuidA', 'a')", () => {
 
     it("has a new uuid", () => {
       expect(crdt.uuid()).not.to.equal("uuidA");
+    });
+
+    it("doesn't change its site uuid", () => {
+      expect(crdt.siteUUID()).to.equal(siteUUID);
     });
   });
 });
