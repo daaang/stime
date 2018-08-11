@@ -84,5 +84,15 @@ describe("CRDT('uuidA', 'a')", () => {
     it("doesn't change its site uuid", () => {
       expect(crdt.siteUUID()).to.equal(siteUUID);
     });
+
+    describe("after running crdt.undo()", () => {
+      beforeEach(() => {
+        crdt.undo();
+      });
+
+      it("has a lastValue of 'a'", () => {
+        expect(crdt.lastValue()).to.equal("a");
+      });
+    });
   });
 });
