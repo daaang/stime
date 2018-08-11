@@ -110,5 +110,15 @@ describe("CRDT('uuidA', 'a')", () => {
         expect(crdt.isUndoable()).to.equal(false);
       });
     });
+
+    describe("after running crdt.update('c')", () => {
+      beforeEach(() => {
+        crdt.update("c");
+      });
+
+      it("has a lastValue of 'c'", () => {
+        expect(crdt.lastValue()).to.equal("c");
+      });
+    });
   });
 });
