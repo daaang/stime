@@ -60,6 +60,10 @@ describe("CRDT('uuidA', 'a')", () => {
     expect(crdt.siteUUID()).to.equal(siteUUID);
   });
 
+  it("has a different site uuid from any different CRDT()", () => {
+    expect(crdt.siteUUID()).not.to.equal(CRDT("", "").siteUUID());
+  });
+
   describe("after running crdt.update('b')", () => {
     beforeEach(() => {
       crdt.update("b");
