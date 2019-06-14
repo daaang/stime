@@ -1,5 +1,5 @@
 // stime: Estimates and Tomatoes
-// Copyright 2018 Matt LaChance
+// Copyright 2018-2019 Matt LaChance
 //
 // This file is part of stime.
 //
@@ -42,7 +42,7 @@ describe("an empty object", () => {
 
   describe("when prototyped with {a: 1, b: 2}", () => {
     beforeEach(() => {
-      Object.setPrototypeOf(obj, {a: 1, b: 2});
+      Object.setPrototypeOf(obj, { a: 1, b: 2 });
     });
 
     itHasKeys([]);
@@ -59,7 +59,7 @@ describe("an empty object", () => {
 
 describe("{a: 1, b: 2}", () => {
   beforeEach(() => {
-    obj = {a: 1, b: 2};
+    obj = { a: 1, b: 2 };
   });
 
   itHasKeys(["a", "b"]);

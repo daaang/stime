@@ -1,5 +1,5 @@
 // stime: Estimates and Tomatoes
-// Copyright 2017-2018 Matt LaChance
+// Copyright 2017-2019 Matt LaChance
 //
 // This file is part of stime.
 //
@@ -92,7 +92,7 @@ describe("Task('holler dollar')", () => {
   });
 
   itHasEstimates(0, 0, 0);
-  itHasJSON({isComplete: false, description: "holler dollar"});
+  itHasJSON({ isComplete: false, description: "holler dollar" });
 
   describe("when given a subtask named 'a'", () => {
     beforeEach(() => {
@@ -125,7 +125,7 @@ describe("Task(2, 4, 8)", () => {
   });
 
   itHasEstimates(2, 4, 8);
-  itHasJSON({isComplete: false, estimates: [2, 4, 8]});
+  itHasJSON({ isComplete: false, estimates: [2, 4, 8] });
 });
 
 describe("Task(5, 8, 13, 'fibonacci')", () => {
@@ -138,9 +138,9 @@ describe("Task(5, 8, 13, 'fibonacci')", () => {
   });
 
   itHasEstimates(5, 8, 13);
-  itHasJSON({isComplete: false,
-             description: "fibonacci",
-             estimates: [5, 8, 13]});
+  itHasJSON({ isComplete: false,
+              description: "fibonacci",
+              estimates: [5, 8, 13] });
 });
 
 describe("Task()", () => {
@@ -157,7 +157,7 @@ describe("Task()", () => {
   });
 
   itHasEstimates(0, 0, 0);
-  itHasJSON({isComplete: false});
+  itHasJSON({ isComplete: false });
 
   it("has an empty list of subtasks", () => {
     expect(task.subtasks).to.deep.equal([]);
@@ -189,7 +189,7 @@ describe("Task()", () => {
       expect(task.isComplete()).to.equal(false);
     });
 
-    itHasJSON({isComplete: true});
+    itHasJSON({ isComplete: true });
   });
 
   describe("after adding a 3,5,8 child", () => {
@@ -200,7 +200,7 @@ describe("Task()", () => {
     itHasEstimates(3, 5, 8);
     itHasJSON({
       isComplete: false,
-      subtasks: [{isComplete: false, estimates: [3, 5, 8]}]
+      subtasks: [{ isComplete: false, estimates: [3, 5, 8] }]
     });
 
     describe("and then setting the best-case to 2", () => {
@@ -213,7 +213,7 @@ describe("Task()", () => {
       itHasJSON({
         isComplete: false,
         estimates: [2, null, null],
-        subtasks: [{isComplete: false, estimates: [3, 5, 8]}]
+        subtasks: [{ isComplete: false, estimates: [3, 5, 8] }]
       });
     });
 
@@ -227,7 +227,7 @@ describe("Task()", () => {
       itHasJSON({
         isComplete: false,
         estimates: [null, 4, null],
-        subtasks: [{isComplete: false, estimates: [3, 5, 8]}]
+        subtasks: [{ isComplete: false, estimates: [3, 5, 8] }]
       });
     });
 
@@ -241,7 +241,7 @@ describe("Task()", () => {
       itHasJSON({
         isComplete: false,
         estimates: [null, null, 7],
-        subtasks: [{isComplete: false, estimates: [3, 5, 8]}]
+        subtasks: [{ isComplete: false, estimates: [3, 5, 8] }]
       });
     });
 
@@ -494,7 +494,7 @@ describe("Task({})", () => {
     task = stime.Task({});
   });
 
-  itHasJSON({isComplete: false});
+  itHasJSON({ isComplete: false });
 });
 
 describe("Task(Task({}))", () => {
@@ -502,27 +502,27 @@ describe("Task(Task({}))", () => {
     task = stime.Task(stime.Task({}));
   });
 
-  itHasJSON({isComplete: false});
+  itHasJSON({ isComplete: false });
 });
 
-testJSON({isComplete: true});
-testJSON({isComplete: false, description: "hello"});
-testJSON({isComplete: false, estimates: [3, 9, 27]});
-testJSON({isComplete: false, tags: ["a", "b"]});
-testJSON({isComplete: false, categories: {a: "one", b: "two"}});
+testJSON({ isComplete: true });
+testJSON({ isComplete: false, description: "hello" });
+testJSON({ isComplete: false, estimates: [3, 9, 27] });
+testJSON({ isComplete: false, tags: ["a", "b"] });
+testJSON({ isComplete: false, categories: { a: "one", b: "two" } });
 
 testJSON({
   isComplete: false,
   description: "root task",
   subtasks: [
-    {isComplete: false, description: "first subtask"},
-    {isComplete: false, description: "second subtask"}
+    { isComplete: false, description: "first subtask" },
+    { isComplete: false, description: "second subtask" }
   ]
 });
 
 describe("Task({intervals: [{description: 'matt'}]})", () => {
   beforeEach(() => {
-    task = stime.Task({intervals: [{description: "matt"}]});
+    task = stime.Task({ intervals: [{ description: "matt" }] });
   });
 
   it("stores a full interval object", () => {

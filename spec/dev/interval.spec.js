@@ -1,5 +1,5 @@
 // stime: Estimates and Tomatoes
-// Copyright 2017 Matt LaChance
+// Copyright 2017, 2019 Matt LaChance
 //
 // This file is part of stime.
 //
@@ -96,7 +96,7 @@ describe("Interval('reticulating splines')", () => {
 
 describe("Interval({description: 'hello'})", () => {
   beforeEach(() => {
-    interval = stime.Interval({description: "hello"});
+    interval = stime.Interval({ description: "hello" });
   });
 
   it("stores a description of 'hello'", () => {
@@ -137,7 +137,7 @@ describe("Interval(...) with all four named args", () => {
 
 describe("Interval({extraRest: 10*60*1000})", () => {
   beforeEach(() => {
-    interval = stime.Interval({extraRest: 10 * 60 * 1000});
+    interval = stime.Interval({ extraRest: 10 * 60 * 1000 });
   });
 
   it("adds extraRest to the total rest time", () => {

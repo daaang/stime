@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "eslint .",
     "test": "mocha --reporter nyan --recursive spec",
-    "travis": "istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- --reporter spec --recursive spec"
+    "travis": "nyc ./node_modules/.bin/_mocha --reporter spec --recursive spec",
+    "lcov": "nyc report --reporter=text-lcov"
   },
   "repository": {
     "type": "git",
@@ -24,11 +25,11 @@
     "eslint": "^5.1.0",
     "eslint-config-standard": "^12.0.0-alpha.0",
     "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-node": "^5.2.1",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-standard": "^3.1.0",
-    "istanbul": "^0.4.5",
-    "mocha": "^4.1.0"
+    "eslint-plugin-node": "^9.0.0",
+    "eslint-plugin-promise": "^4.0.0",
+    "eslint-plugin-standard": "^4.0.0",
+    "mocha": "^6.0.0",
+    "nyc": "^14.1.1"
   },
   "dependencies": {
     "uuid": "^3.3.2"

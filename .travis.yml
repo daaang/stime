@@ -5,4 +5,4 @@ node_js:
 - "8"
 - "7"
 - "6"
-script: npm run lint && npm run travis && cat coverage/lcov.info | ./node_modules/.bin/coveralls
+script: npm -s run lint && npm -s run travis && npm -s run lcov | ./node_modules/.bin/coveralls

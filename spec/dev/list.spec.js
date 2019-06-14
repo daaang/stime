@@ -1,5 +1,5 @@
 // stime: Estimates and Tomatoes
-// Copyright 2018 Matt LaChance
+// Copyright 2018-2019 Matt LaChance
 //
 // This file is part of stime.
 //
@@ -65,15 +65,15 @@ const itCannotBeRedone = function() {
 };
 
 describeList({}, () => {
-  itHasJSON({tasks: {}, order: []});
+  itHasJSON({ tasks: {}, order: [] });
 });
 
-describeList({tasks: {"1": {}}, order: [1]}, () => {
-  itHasJSON({tasks: {"1": {isComplete: false}}, order: [1]});
+describeList({ tasks: { "1": {} }, order: [1] }, () => {
+  itHasJSON({ tasks: { "1": { isComplete: false } }, order: [1] });
 });
 
-describeList({uuid: "fake uuid"}, () => {
-  itHasJSON({uuid: "fake uuid"});
+describeList({ uuid: "fake uuid" }, () => {
+  itHasJSON({ uuid: "fake uuid" });
 });
 
 describe("List()", () => {
@@ -87,7 +87,7 @@ describe("List()", () => {
   itCannotBeUndone();
   itCannotBeRedone();
 
-  itHasJSON({tasks: {}, order: []});
+  itHasJSON({ tasks: {}, order: [] });
 
   it("has a uuid", () => {
     expect(list.uuid()).to.equal(startingUUID);
@@ -113,10 +113,10 @@ describe("List()", () => {
       expect(list.uuid()).not.to.equal(startingUUID);
     });
 
-    itHasJSON({order: [0],
-               tasks: {"0": {isComplete: false,
-                             estimates: [1, 2, 3],
-                             description: "first"}}});
+    itHasJSON({ order: [0],
+                tasks: { "0": { isComplete: false,
+                                estimates: [1, 2, 3],
+                                description: "first" } } });
 
     it("reports the new task to the server", () => {
       expect(list.syncWithServer()).to.deep.equal(
@@ -133,7 +133,7 @@ describe("List()", () => {
       itCannotBeUndone();
       itCanBeRedone();
 
-      itHasJSON({order: [], tasks: {}});
+      itHasJSON({ order: [], tasks: {} });
 
       it("has a reverted uuid", () => {
         expect(list.uuid()).to.equal(startingUUID);
@@ -165,7 +165,7 @@ describe("List()", () => {
         itCannotBeUndone();
         itCanBeRedone();
 
-        itHasJSON({order: [], tasks: {}});
+        itHasJSON({ order: [], tasks: {} });
 
         it("has a reverted uuid", () => {
           expect(list.uuid()).to.equal(startingUUID);
@@ -191,12 +191,12 @@ describe("List()", () => {
       itCanBeUndone();
       itCannotBeRedone();
 
-      itHasJSON({order: [0, 1],
-                 tasks: {"0": {isComplete: false,
-                               estimates: [1, 2, 3],
-                               description: "first"},
-                         "1": {isComplete: false,
-                               description: "second"}}});
+      itHasJSON({ order: [0, 1],
+                  tasks: { "0": { isComplete: false,
+                                  estimates: [1, 2, 3],
+                                  description: "first" },
+                           "1": { isComplete: false,
+                                  description: "second" } } });
 
       it("has a new uuid", () => {
         expect(list.uuid()).not.to.equal(startingUUID);
@@ -219,10 +219,10 @@ describe("List()", () => {
         itCanBeUndone();
         itCanBeRedone();
 
-        itHasJSON({order: [0],
-                   tasks: {"0": {isComplete: false,
-                                 estimates: [1, 2, 3],
-                                 description: "first"}}});
+        itHasJSON({ order: [0],
+                    tasks: { "0": { isComplete: false,
+                                    estimates: [1, 2, 3],
+                                    description: "first" } } });
 
         it("has its previous uuid", () => {
           expect(list.uuid()).to.equal(secondUUID);
@@ -243,12 +243,12 @@ describe("List()", () => {
           itCanBeUndone();
           itCannotBeRedone();
 
-          itHasJSON({order: [0, 1],
-                     tasks: {"0": {isComplete: false,
-                                   estimates: [1, 2, 3],
-                                   description: "first"},
-                             "1": {isComplete: false,
-                                   description: "second"}}});
+          itHasJSON({ order: [0, 1],
+                      tasks: { "0": { isComplete: false,
+                                      estimates: [1, 2, 3],
+                                      description: "first" },
+                               "1": { isComplete: false,
+                                      description: "second" } } });
         });
       });
 
